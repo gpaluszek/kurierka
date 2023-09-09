@@ -1,0 +1,30 @@
+.employeestatus {
+    background: white;
+    margin: 21px;
+    border-radius: 4px;
+    .employee-top {
+
+    }
+    .employee-table-style {
+        width: 95%;
+        height: auto;
+        overflow-y: auto;
+        table-layout: fixed;
+        margin: auto;
+        border-collapse: collapse;
+        tr {
+            border-bottom: 1px solid #DDE3EF;
+            th {
+                font-weight: 400;
+                text-align: left;
+            }
+            td {
+                padding: 8px 0;
+               
+            }
+            .employee-status-active {
+                color: green;
+            }
+        }
+    }
+}

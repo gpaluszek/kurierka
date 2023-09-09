@@ -1,0 +1,211 @@
+@import 'sidebar';
+@import "sidebarmini";
+@import 'employee';
+@import 'tableemployee.scss';
+@import "navbar";
+@import "./models/FormModel.scss";
+@import "./models/TableModel.scss";
+@import "./models/FormAddModel.scss";
+@import "./calendar.scss";
+@import "./communique.scss";
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+.dash-container {
+    display: flex;
+}
+.circle-avatar-women {
+    width: 40px;
+    height: 40px;
+    background: #f6c6f7;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+}
+.circle-avatar-man {
+    width: 40px;
+    height: 40px;
+    background: #b5d7f3;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 10px;
+}
+main {
+    width: 100%;
+    background: #ffffff;
+    .main-container {
+        width: 100%;
+        .main-left {
+            width: 100%;
+            max-width: 73.116%;
+           .main-profile {
+            width: 100%;
+            max-width: 1250px;
+            min-height: 400px;
+            background: #000214;
+            border-radius: 4px;
+            .profile-container {
+                padding: 21px;
+                .profile-user {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .profile-user-left {
+                        display: flex;
+                        align-items: center;
+                        .circle-avatar {
+                            background: #E6F3FF;
+                            width: 66px;
+                            height: 66px;
+                            border-radius: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: black;
+                            font-size: 20px;
+                        }
+                        .user-span {
+                            font-size: 16px;
+                            color: white;
+                            flex-direction: column;
+                            display: flex;
+                            margin-left: 18px;
+                            line-height: 22px;
+                            b {
+                                font-weight: 500;
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                    .profile-user-right {
+                        .right-a-settings {
+                            display: flex;
+                            align-items: center;
+                            color: white;
+                            text-decoration: none;
+                            background: #292939;
+                            padding: 5px 10px;
+                            border-radius: 4px;
+                            .SettingsIcon {
+                                margin-right: 10px;
+                            }
+                        }
+                    }
+                }
+                .main-current {
+                    width: 100%;
+                    height: 70px;
+                    background: #A6F7E2;
+                    border-radius: 4px;
+                    margin: 21px 0;
+                }
+                .main-news {
+                    width: 100%;
+                    .main-news-h {
+                        color: white;
+                        font-weight: 500;
+                        margin: 0 0 14px 0;
+                    }
+                    .main-news-more {
+                        width: 100%;
+                        height: 67px;
+                        background: #ffe5a5;
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 14px;
+                        .more-left {
+                            width: 28px;
+                            height: 28px;
+                            background: white;
+                            border-radius: 100%;
+                            margin: 20px 20px 19px 20px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                        .more-right {
+                            display: flex;
+                            flex-direction: column;
+                            .more-h {
+                                font-weight: 500;
+                            }
+                            .more-text {
+                                font-size: 11px;
+                            }
+                        }
+                    }
+                }
+            }
+           }
+        }
+        .main-right {
+    
+        }
+    }    
+}
+.main-boxs-stats {
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+    .main-box {
+        width: 100%;
+        min-height: 300px;
+        margin: 10px;
+        max-width: 307px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        .box-icon{
+            width: 100% !important;
+            max-width: 80px !important;
+            height: 100px !important;
+        }
+        .name-text {
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        .number-text {
+            font-weight: 600;
+            font-size: 16px;
+            width: 100%;
+        }
+    }
+    .box-color-blue {
+        background: #ebf3fe;
+        color: #539bff;
+    }
+    .box-color-red {
+        background: #fbf2ef;
+        color: #fa896b;
+        
+    }
+    .box-color-green {
+        background: #e6fffa;
+        color: #13deb9;
+
+    }
+    .box-color-orange {
+        background: #fef5e5;
+        color: #ffae1f;
+
+    }
+    .box-color-purple {
+        background: #ebf3fe;
+        color: #6a87ff;
+
+    }
+}
+

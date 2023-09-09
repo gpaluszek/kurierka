@@ -1,0 +1,230 @@
+###
+GET http://localhost:5000/users
+###
+GET http://localhost:5000/me
+
+###
+GET http://localhost:5000/users/1
+
+###
+
+// Create a user
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name": "Damian",
+    "surname": "Paluch",
+    "street": "Kasztanowa",
+    "houseNumber": "6",
+    "city": "Kraków",
+    "postCode": "32-087",
+    "sex": "Mężczyzna",
+    "phoneNumber": "79499931s0",
+    "email": "grzegorzpsaluch.krk@gmail.com",
+    "role": "admin",
+    "status": "true",
+    "password": "123123",
+    "confPassword": "123123"
+}
+
+###
+// Login
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "grzegorzpaluch.krk@gmail.com",
+    "password": "123123"
+}
+###
+GET http://localhost:5000/me
+
+###
+
+// Logout
+###
+DELETE http://localhost:5000/logout
+###
+
+PATCH http://localhost:5000/users/3
+Content-Type: application/json
+
+{
+    "name": "Grzegorz",
+    "surname": "Paluch",
+    "street": "Kasztanowa",
+    "houseNumber": "6",
+    "city": "Kraków",
+    "postCode": "32-087",
+    "sex": "Mężczyzna",
+    "phoneNumber": "794999310",
+    "email": "grzegorzpalu2c2hSSSS.krk@gmail.com",
+    "role": "admin",
+    "status": true,
+    "password": "123123",
+    "confPassword": "123123"
+}
+###
+
+// DELETE A USER 
+DELETE  http://localhost:5000/users/2
+###
+###
+
+// DELETE A Copntract 
+DELETE  http://localhost:5000/employee/14/contracts/24
+###
+// Create a contract
+POST http://localhost:5000/employee/2/contracts
+Content-Type: application/json
+
+{
+    "startContract": "16.05.2023",
+    "endContract": "18.05.2024",
+    "position": "Kierowca",
+    "typeContract": "Zleceniessssss333"
+
+}
+###
+PATCH http://localhost:5000/users/status/7
+Content-Type: application/json
+
+{
+    "status": "true"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+### ROUTES
+
+
+
+
+
+
+
+
+
+
+### Dodawanie nowej trasy
+POST http://localhost:5000/addTrail
+Content-Type: application/json
+
+{
+  "name": "Trail Name",
+  "description": "Trail Description",
+  "categoryId": 1
+}
+
+###
+POST http://localhost:5000/connectProfileToTrail
+Content-Type: application/json
+
+{
+  "profileId": 2,
+  "trailId": 1
+}
+###
+POST http://localhost:5000/addCheckpoint
+Content-Type: application/json
+
+{
+ "checkpointName": "Example Checkpoint",
+  "order": 12,
+  "latitude": 123.456,
+  "longitude": -45.678,
+  "googleMapsAddress": "Example Address",
+  "description": "Example Description"
+}
+###
+POST http://localhost:5000/addCategory
+Content-Type: application/json
+
+{
+  "name": "Gazety",
+  "description": "asdasd"
+}
+
+###
+
+POST http://localhost:5000/createRecord
+Content-Type: application/json
+
+{
+  "userId": 2,
+  "date": "2023-08-27T12:00:00Z",
+  "status": "obecny",
+  "routeName": "Tasd b"
+}
+###
+POST http://localhost:5000/addCheckpointToTrail
+Content-Type: application/json
+
+{
+  "checkpointId": 1,
+  "trailId": 2
+}
+###
+GET http://localhost:5000/user/2/records
+###
+GET http://localhost:5000/trails
+###
+GET http://localhost:5000/trails/1/pointsCount
+
+
+###
+POST http://localhost:5000/saveImageToDatabase
+Content-Type: application/json
+
+
+{
+  "imageUrl": 1,
+  "checkpointId": 2
+}
+###
+
+POST http://localhost:5000/saveImageToDatabase
+Content-Type: multipart/form-data; boundary=boundary123
+
+--boundary123
+Content-Disposition: form-data; name="image"; filename="obraz.jpg"
+Content-Type: image/jpeg
+
+@C:\Users\Grzesiek\Desktop\306921528_581839133734635_6793930376145065072_n.jpg
+
+--boundary123
+Content-Disposition: form-data; name="checkpointId"
+
+"1"
+--boundary123--
+###
+
+
+GET http://localhost:5000/countCheckpoints
+
+
+###
+###
+
+
+GET http://localhost:5000/countRoutes
+
+
+###
+###
+
+
+GET http://localhost:5000/countEmployees
+
+
+###

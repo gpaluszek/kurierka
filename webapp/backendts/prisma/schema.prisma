@@ -1,0 +1,115 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          Int       @id @default(autoincrement())
+  name        String
+  surname     String
+  street      String
+  houseNumber String
+  city        String
+  postCode    String
+  sex         String
+  phoneNumber String
+  email       String    @unique
+  password    String
+  role        String
+  status      Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+  profile     Profile?
+}
+
+model Profile {
+  id        Int        @id @default(autoincrement())
+  user      User       @relation(fields: [userId], references: [id])
+  userId    Int        @unique
+  contracts Contract[]
+  trails    Trail[]
+  records   Record[]
+}
+
+model Contract {
+  id            Int      @id @default(autoincrement())
+  startContract DateTime
+  endContract   DateTime
+  position      String
+  typeContract  String
+  profileId     Int
+  profile       Profile  @relation(fields: [profileId], references: [id])
+}
+
+model Communique {
+  id        Int      @id @default(autoincrement())
+  message   String
+  timestamp DateTime
+  title     String
+  sender    String
+}
+
+model Trail {
+  id           Int        @id @default(autoincrement())
+  name         String
+  description  String
+  categoryId   Int?
+  category     Category?  @relation("TrailCategory", fields: [categoryId], references: [id])
+  profiles     Profile[]
+ 
+  checkpointToTrails CheckpointToTrail[]
+}
+
+model Checkpoint {
+  id               Int        @id @default(autoincrement())
+  checkpointName  String
+  order            Int
+  latitude         Float
+  longitude        Float
+  googleMapsAddress String
+  description      String
+  images           CheckpointImage[]
+
+  checkpointToTrails CheckpointToTrail[]
+}
+
+model CheckpointImage {
+  id           Int        @id @default(autoincrement())
+  checkpointId Int
+  imageUrl     String
+  checkpoint   Checkpoint @relation(fields: [checkpointId], references: [id])
+}
+
+model Category {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String
+  trails      Trail[] @relation("TrailCategory")
+}
+
+model Record {
+  id         Int        @id @default(autoincrement())
+  date       DateTime
+  status     String
+  profileId  Int
+  profile    Profile    @relation(fields: [profileId], references: [id])
+  recordRout RecordRout[]
+}
+
+model RecordRout {
+  id        Int        @id @default(autoincrement())
+  nazwa     String
+  recordId  Int
+  record    Record     @relation(fields: [recordId], references: [id])
+}
+
+model CheckpointToTrail {
+  id            Int      @id @default(autoincrement())
+  checkpoint   Checkpoint @relation(fields: [checkpointId], references: [id])
+  checkpointId Int
+  trail        Trail     @relation(fields: [trailId], references: [id])
+  trailId      Int
+}

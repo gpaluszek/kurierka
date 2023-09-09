@@ -1,0 +1,25 @@
+.main-communique {
+    margin: 15px;
+    .main-communique-container {
+        .communique-map {
+            background: #fbf2ef;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px 0;
+            display: flex;
+            .communique-map-left {
+                margin: 10px;
+                svg {
+                    padding: 10px;
+                    background: #ffd6c7;
+                    height: 34px;
+                    width: 34px;
+                    border-radius: 4px;
+                }
+            }
+            .communique-map-right {
+                margin: 5px;
+            }
+        }
+    }
+}

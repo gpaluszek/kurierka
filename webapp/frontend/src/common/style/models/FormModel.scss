@@ -1,0 +1,111 @@
+@import "../colors.scss";
+.form-container {
+    display: flex;
+    margin: 1rem;
+    border-radius: 0.3rem;
+    flex-direction: column;
+    .msg-error {
+        padding: 0.55rem 0.5rem;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        color: #fff;
+        background-color: rgba(220, 53, 69, 0.9);
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+    
+    }
+    .form-top {
+        background: $background-color-white;
+        display: flex;
+        align-items: center;
+        padding: 1.2rem 1rem;
+        border-radius: 4px;
+    
+        .form-icon-top {
+            fill: white;
+            margin-right: 10px;
+            background: #2196F3;
+            width: 40px;
+            height: 40px;
+            padding: 12px;
+            border-radius: 4px;
+        }
+    }
+        .form-bottom {
+            display: flex;
+            background: $background-color-white;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 1rem;
+        }
+        .form-container-left {
+            width: 50%;
+            border-right: 1px solid #f9fafc;
+            padding-right: 0.8rem;
+            display: flex;
+            flex-direction: column;
+            .form-h1 {
+                margin-bottom: 20px;
+                padding: 5px 10px;
+                border-left: 5px solid #2196F3;
+                border-radius: 4px;
+            }
+            .form-p {
+                padding-left: 10px;
+            }
+            .form-add-ill {
+                width: 100%;
+                max-width: 250px;
+                margin: 50px auto;
+                height: auto;
+            }
+        }
+        .form-template {
+            width: 100%;
+            max-width: 50%;
+            padding-left: 0.8rem;
+            .form-field {
+                .form-label {
+                    color: $form-color-label;
+                    padding-top: calc(0.375rem + 1px);
+                    padding-bottom: calc(0.375rem + 1px);
+                    margin-bottom: 0;
+                    font-size: inherit;
+                    line-height: 1.5;
+                    display: block;
+                }
+                .form-control {
+                    .form-input {
+                        display: block;
+                        width: 100%;
+                        height: calc(1.5em + 0.75rem + 0.125rem);
+                        padding: 0.375rem 0.75rem;
+                        font-size: .875rem;
+                        font-weight: 400;
+                        line-height: 1.5;
+                        color: $form-color-label;
+                        background-color: #f9fafc;
+                        background-clip: padding-box;
+                        border: 0.063rem solid #dee2e6;
+                        border-radius: 0.25rem;
+                        //transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                    }
+                }
+            }
+        
+        }
+        .form-button-sub {
+            margin: 20px 0;
+            padding: 10px;
+            border: none;
+            background: #2196F3;
+            color: white;
+            border-radius: 4px;
+            width: 100%;
+        }
+    
+    
+}
