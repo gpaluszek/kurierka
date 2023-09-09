@@ -113,3 +113,13 @@ model CheckpointToTrail {
   trail        Trail     @relation(fields: [trailId], references: [id])
   trailId      Int
 }
+
+// Dodaj model sesji
+model Session {
+  id        Int      @id @default(autoincrement())
+  sid       String
+  expires   DateTime
+  data      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

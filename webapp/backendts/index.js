@@ -2,48 +2,35 @@ import express from "express";
 import cors from "cors";
 import session from "express-session";
 import dotenv from "dotenv";
-import db from "../backend/config/Database.js";
-import SequelizeStore from "connect-session-sequelize";
+import { PrismaClient } from "@prisma/client"; // Importuj klienta Prisma
 import UserRoute from "./routes/UserRoute.js";
 import AuthRoute from "./routes/AuthRoute.js";
 import ContractRoute from "./routes/ContractRoute.js";
 import RoutesRoute from "./routes/RoutesRoute.js";
-import RecordRout  from "./routes/RecordRoute.js";
+import RecordRout from "./routes/RecordRoute.js";
 import ImageRoute from "./routes/ImageRoute.js";
 import CountRoute from "./routes/CountRoute.js";
 dotenv.config();
 
 const app = express();
 
-
 app.use(express.json());
-const sessionStore = SequelizeStore(session.Store)
 
-const store = new sessionStore({
-    db: db
-});
+// Inicjalizacja klienta Prisma
+const prisma = new PrismaClient();
 
-// // tworzenie tabel
-// // (async()=>{
-// //     await db.sync();
-// // })();
-
-app.use(session({
+app.use(
+  session({
     secret: process.env.SESS_SECRET,
     resave: false,
     saveUninitialized: true,
-    store: store,
     cookie: {
-        secure: 'auto'
-    }
+      secure: "auto",
+    },
+  })
+);
 
- }));
-
-app.use(cors({
-   
-   origin: 'http://localhost:3000',
-   credentials: true
-}));
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(AuthRoute);
 app.use(UserRoute);
 app.use(ContractRoute);
@@ -52,14 +39,10 @@ app.use(RecordRout);
 app.use(ImageRoute);
 app.use(CountRoute);
 
+app.listen(process.env.APP_PORT, () => {
+  console.log("Server up and running...");
+});
 
-// // store.sync();
-
-
-app.listen(process.env.APP_PORT, ()=> {
-   console.log('Server up and running...');
- });
-
- app.get("/", (req, res) => {
-    res.send("Witaj w aplikacji!");
-  });
+app.get("/", (req, res) => {
+  res.send("Witaj w aplikacji!");
+});

@@ -3,24 +3,28 @@ const prisma = new PrismaClient();
 import argon2 from "argon2";
 
 
-export const Login = async (req, res) =>{
+export const Login = async (req, res) => {
     const user = await prisma.user.findUnique({
-        where: {
-            email: req.body.email
-        }
+      where: {
+        email: req.body.email,
+      },
     });
-    if(!user) return res.status(404).json({msg: "Użytkownik nie został znaleziony"});
+    if (!user) return res.status(404).json({ msg: "Użytkownik nie został znaleziony" });
+  
     const match = await argon2.verify(user.password, req.body.password);
-    if(!match) return res.status(400).json({msg: "Błędne hasło"});
-    req.session.userId = user.id;
+    if (!match) return res.status(400).json({ msg: "Błędne hasło" });
+  
+    req.session.userId = user.id; // Ustaw sesję
+    req.session.save(); // Zapisz sesję w bazie danych
+  
     const uid = user.id;
     const name = user.name;
     const email = user.email;
     const role = user.role;
-
-
-    res.status(200).json({uid, name, email, role});
-}
+  
+    res.status(200).json({ uid, name, email, role });
+  };
+  
 export const Me = async (req, res) => {
     if(!req.session.userId){
         return res.status(401).json({msg: "Proszę zalogować się na swoje konto!"});
