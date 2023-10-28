@@ -10,7 +10,11 @@ import {
     getTrails,
     getPointsCountForRoute,
     addCheckpointToTrail,
-    deleteTrail
+    deleteTrail,
+    getAllPoints,
+    getAvailableCheckpoints,
+    getExistingCheckpoints,
+    removeCheckpointFromTrail
 } from "../controllers/RouteController.js";
 import { verifyUser, adminOnly } from "../middleware/AuthUser.js";
 
@@ -26,8 +30,13 @@ router.get('/trails', getTrails);
 router.get('/trails/:id/pointsCount', getPointsCountForRoute);
 router.post('/addCheckpointToTrail', addCheckpointToTrail);
 router.delete('/deleteTrail/:id', deleteTrail);
-export default router;
+router.get('/getAllPoints', getAllPoints);
+router.get('/getAvailableCheckpoints/:id', getAvailableCheckpoints);
+router.get('/getExistingCheckpoints/:trailId', getExistingCheckpoints);
+router.delete('/removeCheckpointFromTrail/:trailId', removeCheckpointFromTrail);
 
+
+  export default router;
 
 
 

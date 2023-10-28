@@ -22,6 +22,10 @@ const AddCheckpoint = () => {
     longitude: 0,
     googleMapsAddress: "",
     description: "",
+    city: "", // Dodaj puste pole miasto
+    houseNumber: "", // Dodaj puste pole numer domu
+    postCode: "", // Dodaj puste pole kod pocztowy
+    street: "", // Dodaj puste pole ulica
   };
 
   const [formData, setFormData] = useState(initialFormData);
@@ -37,14 +41,17 @@ const AddCheckpoint = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    console.log("Próba wysłania formularza");
     try {
-      const response = await axios.post("/api/addCheckpoint", formData); // Assuming your API endpoint is "/api/addCheckpoint"
+      const response = await axios.post(
+        "http://localhost:5000/addCheckpoint",
+        formData
+      );
       const data = response.data;
 
       if (data.checkpoint) {
         setMsg("Punkt kontrolny dodany pomyślnie.");
-        setFormData(initialFormData); // Clear form after successful submission
+        setFormData(initialFormData);
       } else {
         setMsg("Wystąpił błąd podczas dodawania punktu kontrolnego.");
       }
@@ -53,6 +60,7 @@ const AddCheckpoint = () => {
       setMsg("Wystąpił błąd podczas dodawania punktu kontrolnego.");
     }
   };
+
 
   
 
@@ -85,7 +93,8 @@ const AddCheckpoint = () => {
         <FsquareIcon className="table-header-panel-icon" />Zarządzanie Trasami: Twoja Centrum Kontroli
       </div>
       <div className="model-form-container">
-        <form onSubmit={handleSubmit}>
+      {msg && <p>{msg}</p>}
+          <form onSubmit={handleSubmit}>
             <label for="form-text-one">
                       Nazwa punktu kontrolnego
            </label>
@@ -108,28 +117,43 @@ const AddCheckpoint = () => {
             value={formData.order}
             onChange={handleChange}
           />
-           <label for="form-text-three">
-                      Szerokość Google
+           <label for="form-text-six">
+                      Miasto
                     </label>
-          <input id="form-text-three"
-          className="model-form-input-text"
-            type="text"
-            placeholder="Szerokość geograficzna"
-            name="latitude"
-            value={formData.latitude}
+          <textarea className="model-form-input-text" id="form-text-six"
+            placeholder="W jakim mieście znajduje się punkt"
+            name="city"
+            value={formData.city}
             onChange={handleChange}
           />
-           <label for="form-text-four">
-                      Długość Google
+             <label for="form-text-six">
+                      Ulica
                     </label>
-          <input id="form-text-four"
-          className="model-form-input-text"
-            type="text"
-            placeholder="Długość geograficzna"
-            name="longitude"
-            value={formData.longitude}
+          <textarea className="model-form-input-text" id="form-text-six"
+            placeholder="Na jakiej ulicy znajduje się punkt"
+            name="street"
+            value={formData.street}
             onChange={handleChange}
           />
+           <label for="form-text-six">
+                      Numer domu
+                    </label>
+          <textarea className="model-form-input-text" id="form-text-six"
+            placeholder="Jaki numer domu/lokalu ma punkt"
+            name="houseNumber"
+            value={formData.houseNumber}
+            onChange={handleChange}
+          />
+           <label for="form-text-six">
+                      Kod Pocztowy
+                    </label>
+          <textarea className="model-form-input-text" id="form-text-six"
+            placeholder="Jaki kod pocztowy ma przypisany punkt"
+            name="postCode"
+            value={formData.postCode}
+            onChange={handleChange}
+          />
+        
            <label for="form-text-five">
                       Adress Google
                     </label>
@@ -145,18 +169,20 @@ const AddCheckpoint = () => {
                       Opis
                     </label>
           <textarea className="model-form-input-text" id="form-text-six"
-            placeholder="Opis"
+            placeholder="Dodatkowe informacje o punkcie"
             name="description"
             value={formData.description}
             onChange={handleChange}
           />
           
-          <button className="model-from-input-submit" type="submit">Dodaj punkt kontrolny</button>
-        </form>
+          
+          <button className="model-from-input-submit" type="submit">
+              Dodaj punkt kontrolny
+            </button>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-  
   );
 };
 

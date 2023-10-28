@@ -1,10 +1,11 @@
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class AuthService {
   final String apiUrl = 'http://10.0.2.2:5000'; // Zmień na rzeczywisty adres API
 
-  Future<Map<String, dynamic>?> login(String email, String password) async {
+  Future<bool> login(String email, String password) async {
     try {
       final response = await http.post(
         Uri.parse('$apiUrl/login'),
@@ -12,21 +13,14 @@ class AuthService {
         body: jsonEncode({'email': email, 'password': password}),
       );
 
-      final Map<String, dynamic> data = jsonDecode(response.body);
-      print('Odpowiedź po zalogowaniu: $data'); // Wypisuje odpowiedź na konsoli
-
       if (response.statusCode == 200) {
-        return data; // To jest token dostępu zwracany przez serwer
-      } else if (response.statusCode == 404) {
-        return null;
-      } else if (response.statusCode == 400) {
-        return null;
+        return true; // Zwracaj true, jeśli zalogowano poprawnie
       } else {
-        throw Exception('Błąd logowania');
+        return false;
       }
     } catch (e) {
       print('Wystąpił błąd: $e');
-      return null;
+      return false;
     }
   }
 
@@ -34,12 +28,11 @@ class AuthService {
 
 
 
-  Future<Map<String, dynamic>?> getUserData(String accessToken) async {
+  Future<Map<String, dynamic>?> getUserData(String email) async {
     try {
       final response = await http.get(
-        Uri.parse('$apiUrl/Me'),
+        Uri.parse('$apiUrl/Me?email=$email'), // Przekazuj email jako parametr
         headers: {
-          'Authorization': 'Bearer $accessToken',
           'Content-Type': 'application/json',
         },
       );
@@ -48,8 +41,9 @@ class AuthService {
         final Map<String, dynamic> data = jsonDecode(response.body);
         return data;
       } else {
-        // Obsłuż błędy pobierania danych użytkownika, na przykład rzucając wyjątkiem
-        throw Exception('Błąd pobierania danych użytkownika');
+        print('Kod odpowiedzi HTTP: ${response.statusCode}');
+        print('Treść odpowiedzi: ${response.body}');
+        return null; // Zamiast rzucenia wyjątku
       }
     } catch (e) {
       // Obsłuż błąd sieci lub inne wyjątki tutaj
@@ -57,4 +51,5 @@ class AuthService {
       return null;
     }
   }
+
 }

@@ -21,7 +21,7 @@ Content-Type: application/json
     "postCode": "32-087",
     "sex": "Mężczyzna",
     "phoneNumber": "79499931s0",
-    "email": "grzegorzpsaluch.krk@gmail.com",
+    "email": "damian@gmail.com",
     "role": "admin",
     "status": "true",
     "password": "123123",
@@ -171,8 +171,8 @@ POST http://localhost:5000/addCheckpointToTrail
 Content-Type: application/json
 
 {
-  "checkpointId": 5,
-  "trailId": 2
+  "checkpointId": 1,
+  "trailId": 46
 }
 ###
 GET http://localhost:5000/user/2/records
@@ -222,9 +222,19 @@ GET http://localhost:5000/countRoutes
 
 ###
 ###
-
-
 GET http://localhost:5000/countEmployees
 
-
 ###
+GET http://localhost:5000/communiques
+###
+GET http://localhost:5000/getAllPoints
+###
+GET http://localhost:5000/getExistingCheckpoints/49
+###
+DELETE http://localhost:5000/removeCheckpointFromTrail/49
+Content-Type: application/json
+
+{
+  "trailId": 49,
+  "checkpointIds": [12]
+}

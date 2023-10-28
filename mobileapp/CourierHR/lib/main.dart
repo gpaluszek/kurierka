@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'screens/login_page.dart';
 
 void main() {
@@ -10,25 +7,22 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  
   const MyApp({Key? key}) : super(key: key);
-  
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
-    // Dodana linia
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
     return MaterialApp(
       title: 'CourierHR',
-      // Dodana linia
-      //home: const MyHomePage(title: 'Flutter Demo Home Page'),
       home: LoginPage(),
     );
   }
 }
+
+
 
 
 // class MyHomePage extends StatefulWidget {

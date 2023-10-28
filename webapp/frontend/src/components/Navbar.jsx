@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { ArrowDown, HamburgerIcon, SettingsIcon } from '../common/icons/icons';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 function Navbar(props) {
   const {user} = useSelector((state) => state.auth);
   const [users, setUsers] = useState([]);
@@ -29,6 +30,7 @@ function Navbar(props) {
       <div className='navbar-setting'>
         <SettingsIcon className="navbar-icon-setting"/>
       </div>
+      <NavLink className="" to="/me">
       {user && user.sex == "Kobieta" ? (
                       <div className="circle-avatar-women">
                         {user && `${user.name.charAt(0).toUpperCase()}${user.surname.charAt(0).toUpperCase()}`}
@@ -37,7 +39,8 @@ function Navbar(props) {
                       <div className="circle-avatar-man">
                         {user && `${user.name.charAt(0).toUpperCase()}${user.surname.charAt(0).toUpperCase()}`}
                       </div>
-                    )}          
+                    )}     
+                    </NavLink>     
       </div>
     </nav>
   )

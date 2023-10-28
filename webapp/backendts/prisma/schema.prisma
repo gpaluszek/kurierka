@@ -67,12 +67,13 @@ model Checkpoint {
   id               Int        @id @default(autoincrement())
   checkpointName  String
   order            Int
-  latitude         Float
-  longitude        Float
   googleMapsAddress String
   description      String
+  postCode         String 
+  city             String
+  street           String
+  houseNumber      String
   images           CheckpointImage[]
-
   checkpointToTrails CheckpointToTrail[]
 }
 

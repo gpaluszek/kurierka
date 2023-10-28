@@ -14,7 +14,6 @@ const CalendarMain = () => {
   return (
     <div>
       <div className="CalendarMain-Container">
-      <CalendarFunction />
       <TimelineFunction />
       </div>
     </div>

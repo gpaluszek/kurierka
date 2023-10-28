@@ -34,19 +34,21 @@ class UserModel {
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       id: json['id'],
-      name: json['name'],
-      email: json['email'],
-      surname: json['surname'],
-      street: json['street'],
-      houseNumber: json['houseNumber'],
-      city: json['city'],
-      postCode: json['postCode'],
-      sex: json['sex'],
-      phoneNumber: json['phoneNumber'],
-      password: json['password'],
-      role: json['role'],
-      status: json['status'],
-      createdAt: DateTime.parse(json['createdAt']),
+      name: json['name'] ?? '', // Dodaj kontrolę null
+      email: json['email'] ?? '', // Dodaj kontrolę null
+      surname: json['surname'] ?? '', // Dodaj kontrolę null
+      street: json['street'] ?? '', // Dodaj kontrolę null
+      houseNumber: json['houseNumber'] ?? '', // Dodaj kontrolę null
+      city: json['city'] ?? '', // Dodaj kontrolę null
+      postCode: json['postCode'] ?? '', // Dodaj kontrolę null
+      sex: json['sex'] ?? '', // Dodaj kontrolę null
+      phoneNumber: json['phoneNumber'] ?? '', // Dodaj kontrolę null
+      password: json['password'] ?? '', // Dodaj kontrolę null
+      role: json['role'] ?? '', // Dodaj kontrolę null
+      status: json['status'] ?? false, // Dodaj kontrolę null
+      createdAt: DateTime.parse(json['createdAt'] ?? ''), // Dodaj kontrolę null
     );
   }
+
+
 }

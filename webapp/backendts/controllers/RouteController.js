@@ -37,19 +37,28 @@ export const connectProfileToTrail = async (req, res) => {
 
 
 export const addCheckpoint = async (req, res) => {
-  const { checkpointName, order, latitude, longitude, googleMapsAddress, description } = req.body;
+  const { checkpointName, order, googleMapsAddress, description, city, houseNumber, postCode, street } = req.body;
+
+  // Upewnij się, że "order" jest rzeczywiście liczbą całkowitą
+  const orderInt = parseInt(order);
+
+  if (isNaN(orderInt)) {
+    return res.status(400).json({ error: "Nieprawidłowy numer punktu." });
+  }
 
   try {
     const checkpoint = await prisma.checkpoint.create({
       data: {
         checkpointName,
-        order,
-        latitude,
-        longitude,
+        order: orderInt, // Użyj rzutowanej wartości "orderInt"
         googleMapsAddress,
         description,
-        
-  }});
+        city,
+        houseNumber,
+        postCode,
+        street
+      }
+    });
 
     return res.status(200).json({ message: 'Punkt kontrolny dodany pomyślnie.', checkpoint });
   } catch (error) {
@@ -187,7 +196,7 @@ export const getPointsCountForRoute = async (req, res) => {
 
 
 export const addCheckpointToTrail = async (req, res) => {
-  const { trailId, checkpointId } = req.body;
+  const { trailId, checkpointIds } = req.body;
 
   try {
     // Sprawdź czy trasa istnieje
@@ -199,29 +208,51 @@ export const addCheckpointToTrail = async (req, res) => {
       return res.status(404).json({ error: 'Trasa nie istnieje.' });
     }
 
-    // Sprawdź czy punkt kontrolny istnieje
-    const checkpoint = await prisma.checkpoint.findUnique({
-      where: { id: checkpointId },
-    });
+    const checkpointsToAdd = [];
+    const existingCheckpoints = [];
 
-    if (!checkpoint) {
-      return res.status(404).json({ error: 'Punkt kontrolny nie istnieje.' });
+    // Sprawdź, które punkty kontrolne istnieją i które są do dodania
+    for (const checkpointId of checkpointIds) {
+      const existingCheckpoint = await prisma.checkpointToTrail.findFirst({
+        where: { trailId, checkpointId },
+      });
+
+      if (existingCheckpoint) {
+        existingCheckpoints.push(existingCheckpoint);
+      } else {
+        checkpointsToAdd.push(checkpointId);
+      }
     }
 
-    // Dodaj powiązanie punktu kontrolnego z trasą
-    await prisma.checkpointToTrail.create({
-      data: {
-        checkpoint: { connect: { id: checkpointId } },
-        trail: { connect: { id: trailId } },
-      },
-    });
+    // Dodaj powiązania punktów kontrolnych z trasą
+    for (const checkpointId of checkpointsToAdd) {
+      await prisma.checkpointToTrail.create({
+        data: {
+          checkpoint: { connect: { id: checkpointId } },
+          trail: { connect: { id: trailId } },
+        },
+      });
+    }
 
-    return res.status(200).json({ message: 'Punkt kontrolny dodany do trasy pomyślnie.' });
+    const messages = [];
+
+    for (const existingCheckpoint of existingCheckpoints) {
+      messages.push(
+        `Punkt kontrolny o ID ${existingCheckpoint.checkpointId} już istnieje w trasie.`
+      );
+    }
+
+    return res.status(200).json({
+      message: 'Operacja zakończona sukcesem.',
+      skippedCheckpoints: messages,
+    });
   } catch (error) {
     console.error('Błąd:', error);
-    return res.status(500).json({ error: 'Wystąpił błąd podczas dodawania punktu do trasy.' });
+    return res.status(500).json({ error: 'Wystąpił błąd podczas dodawania punktów do trasy.' });
   }
 };
+
+
 
 
 
@@ -280,3 +311,133 @@ export const deleteTrail = async (req, res) => {
       .json({ error: "Wystąpił błąd podczas usuwania trasy." });
   }
 };
+
+
+export const getAllPoints = async (req, res) => {
+  try {
+    const points = await prisma.checkpoint.findMany();
+    return res.status(200).json(points);
+  } catch (error) {
+    console.error("Błąd:", error);
+    return res.status(500).json({ error: "Wystąpił błąd podczas pobierania punktów." });
+  }
+};
+export const getAvailableCheckpoints = async (req, res) => {
+  const { trailId } = req.params;
+
+  try {
+    // Pobierz punkty kontrolne, które nie zostały jeszcze przypisane do trasy (do dostępnych punktów)
+    const availableCheckpoints = await prisma.checkpoint.findMany({
+      where: {
+        NOT: {
+          checkpointToTrails: {
+            some: {
+              trailId: parseInt(trailId),
+            },
+          },
+        },
+      },
+    });
+
+    return res.status(200).json(availableCheckpoints);
+  } catch (error) {
+    console.error("Błąd:", error);
+    return res.status(500).json({
+      error: "Wystąpił błąd podczas pobierania dostępnych punktów kontrolnych.",
+    });
+  }
+};
+
+
+
+// Kontroler z dynamicznym trailId
+export const getExistingCheckpoints = async (req, res) => {
+  const { trailId } = req.params;
+
+  console.log("Przekazany trailId:", trailId);
+
+  if (!trailId || !/^\d+$/.test(trailId)) {
+    return res.status(400).json({ error: "Nieprawidłowy identyfikator trasy." });
+  }
+
+  try {
+    const existingCheckpoints = await prisma.checkpoint.findMany({
+      where: {
+        checkpointToTrails: {
+          some: {
+            trailId: parseInt(trailId), // Użyj trailId jako liczby całkowitej
+          },
+        },
+      },
+    });
+
+    console.log("Istniejące punkty kontrolne:", existingCheckpoints);
+
+    return res.status(200).json(existingCheckpoints);
+  } catch (error) {
+    console.error("Błąd:", error);
+    return res.status(500).json({
+      error: "Wystąpił błąd podczas pobierania istniejących punktów kontrolnych.",
+    });
+  }
+};
+
+
+
+export const removeCheckpointFromTrail = async (req, res) => {
+  const { trailId } = req.params; // Zmieniono to na req.params.trailId
+  const { checkpointIds } = req.body;
+  const parsedTrailId = parseInt(trailId, 10);
+  try {
+    // Sprawdź, czy trasa istnieje
+    console.log('Znaleziona trasa przed:', trailId);
+    const trail = await prisma.trail.findUnique({
+      where:  { id: parsedTrailId  }
+    });
+    console.log('Znaleziona trasa:', trail); // Dodaj ten wiersz
+
+    if (!trail) {
+      return res.status(404).json({ error: 'Trasa nie istnieje.' });
+    }
+
+    // Sprawdź, czy punkty kontrolne istnieją
+    const existingCheckpoints = await prisma.checkpoint.findMany({
+      where: {
+        id: {
+          in: checkpointIds,
+        },
+      },
+    });
+    console.log('Istniejące punkty kontrolne:', existingCheckpoints); // Dodaj ten wiersz
+
+    if (existingCheckpoints.length !== checkpointIds.length) {
+      const nonExistingCheckpointIds = checkpointIds.filter(
+        (id) => !existingCheckpoints.map((checkpoint) => checkpoint.id).includes(id)
+      );
+      console.log('Nieistniejące punkty kontrolne:', nonExistingCheckpointIds); // Dodaj ten wiersz
+      return res.status(404).json({
+        error: 'Niektóre punkty kontrolne nie istnieją.',
+        nonExistingCheckpointIds,
+      });
+    }
+
+    // Usuń powiązania punktów kontrolnych z trasą
+    for (const checkpointId of checkpointIds) {
+      await prisma.checkpointToTrail.deleteMany({
+        where: {
+          checkpointId,
+          trailId:parsedTrailId,
+        },
+      });
+    }
+
+    return res.status(200).json({ message: 'Punkty kontrolne usunięte z trasy pomyślnie.' });
+  } catch (error) {
+    console.error('Błąd:', error);
+    return res
+      .status(500)
+      .json({ error: 'Wystąpił błąd podczas usuwania punktów z trasy.' });
+  }
+};
+
+

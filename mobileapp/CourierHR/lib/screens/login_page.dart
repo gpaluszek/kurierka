@@ -16,29 +16,28 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
+  String errorMessage = '';
+
   Future<void> _handleLogin() async {
-    try {
-      final Map<String, dynamic>? loginData = await authService.login(
-        emailController.text,
-        passwordController.text,
+    final email = emailController.text;
+    final password = passwordController.text;
+
+    final isLoggedIn = await authService.login(email, password);
+
+    if (isLoggedIn) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => HomePage(email: email),
+        ),
       );
-
-      if (loginData != null) {
-        print('Zalogowano');
-
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => HomePage(),
-          ),
-        );
-      } else {
-        print('Błąd logowania');
-      }
-    } catch (e) {
-      print('Wystąpił błąd: $e');
+    } else {
+      setState(() {
+        errorMessage = 'Błąd logowania: Nieprawidłowe dane';
+      });
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -170,6 +169,11 @@ class _LoginPageState extends State<LoginPage> {
                           color: Colors.white,
                         ),
                       ),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      errorMessage,
+                      style: TextStyle(color: Colors.red),
                     ),
                   ],
                 ),

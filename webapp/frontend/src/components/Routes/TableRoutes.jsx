@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { ArrowDown, ArrowUp } from "../../common/icons/icons";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate  } from "react-router-dom";
 import handleGenerateReport from "./RouteReport";
 import {
   HeartFav,
@@ -22,7 +22,12 @@ const TableRoutes = () => {
   const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
   const [routeToDelete, setRouteToDelete] = useState(null);
-  
+  const navigate = useNavigate();
+
+
+  const navigateToAddPoints = (routeId) => {
+    navigate(`/routes/addpoints/${routeId}`);
+  };
   <handleGenerateReport />;
 
   useEffect(() => {
@@ -207,6 +212,8 @@ const TableRoutes = () => {
           <button className="options-button" onClick={toggleAddCategoryForm}>Dodaj kategorię</button>
           <button className="options-button" onClick={toggleCategoryList}>Lista kategorii</button>
           <NavLink className="options-button"  to="/addcheckpoint">Dodaj punkt </NavLink>
+          <NavLink className="options-button"  to="/addexcel">Dodaj punky przez excel </NavLink>
+      
 
 
           {showAddRouteForm && (
@@ -387,6 +394,7 @@ const TableRoutes = () => {
                   <td className="table-main-td">{route.pointsCount}</td>
                   <td className="table-main-td">{route.category || "Brak kategorii"}</td>
                   <td className="table-main-td table-main-setting">
+                  <button className="table-main-setting-grey" onClick={() => navigateToAddPoints(route.id)}>Dodaj punkty</button>
                     <button className="table-main-setting-grey" onClick={() => handleGenerateReport(route)}>Raport PDF</button>
                     <button className="confirmation-button-style-delete" onClick={() => handleDeleteRoute(route)}>Usuń trasę</button>
                     <button className="button-table">
