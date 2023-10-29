@@ -1,50 +1,74 @@
-
-import axios from "axios"; // Dodaj ten import
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import "moment/locale/pl";
+import axios from "axios";
 import "../../../common/style/CustomTimeLine.scss";
 
 const CustomTimeline = () => {
   const [employees, setEmployees] = useState([]);
+  const [currentWeek, setCurrentWeek] = useState(moment().startOf('isoWeek'));
 
+  useEffect(() => {
+    // Pobierz listę pracowników z aktywnym kontraktem z serwera
+    axios.get('http://localhost:5000/active-users')
+      .then((response) => {
+        setEmployees(response.data);
+      })
+      .catch((error) => {
+        console.error('Błąd podczas pobierania pracowników:', error);
+      });
+  }, []);
 
+  // Funkcja do przesuwania się w przód i w tył w tygodniach
+  const changeWeek = (forward) => {
+    if (forward) {
+      setCurrentWeek(currentWeek.clone().add(1, 'weeks'));
+    } else {
+      setCurrentWeek(currentWeek.clone().subtract(1, 'weeks'));
+    }
+  };
 
-    return (
-      <div className="custom-timeline">
-        <table>
-          <thead>
-            <tr>
-              <th>Imię i Nazwisko</th>
-              <th>Stanowisko</th>
-              <th>Ilość 1</th>
-              <th>Ilość 2</th>
-              <th>Ilość 3</th>
-              <th>Ilość 4</th>
-              <th>Ilość 5</th>
-              <th>Ilość 6</th>
-              <th>Ilość 7</th>
-            </tr>
-          </thead>
-          <tbody>
-            {employees.map((employee) => (
-              <tr key={employee.id}>
-                <td>{employee.firstName} {employee.lastName}</td>
-                <td>{employee.position}</td>
-                <td>{employee.amount1}</td>
-                <td>{employee.amount2}</td>
-                <td>{employee.amount3}</td>
-                <td>{employee.amount4}</td>
-                <td>{employee.amount5}</td>
-                <td>{employee.amount6}</td>
-                <td>{employee.amount7}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+  const renderTableHeader = () => {
+    const weekDays = [];
+
+    for (let i = 0; i < 7; i++) {
+      const day = currentWeek.clone().startOf('isoWeek').add(i, 'days');
+      weekDays.push(day);
+    }
+
+    return weekDays.map((day, index) => (
+      <th key={index}>{day.format('YYYY-MM-DD')}</th>
+    ));
+  };
+
+  const renderTableCells = () => {
+    return employees.map((employee) => (
+      <tr key={employee.id}>
+        <td>{employee.name} {employee.surname}</td>
+        <td>{employee.position}</td>
+      </tr>
+    ));
+  };
+
+  return (
+    <div className="custom-timeline">
+      <div className="week-navigation">
+        <button onClick={() => changeWeek(false)}>Poprzedni tydzień</button>
+        <button onClick={() => changeWeek(true)}>Następny tydzień</button>
       </div>
-
-    
+      <table>
+        <thead>
+          <tr>
+            <th>Imię i Nazwisko</th>
+            <th>Stanowisko</th>
+            {renderTableHeader()}
+          </tr>
+        </thead>
+        <tbody>
+          {renderTableCells()}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

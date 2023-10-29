@@ -222,3 +222,20 @@ export const updateUserStatus = async (req, res) => {
     res.status(400).json({ msg: error.message });
   }
 };
+
+
+
+export const getActiveUsers = async (req, res) => {
+  try {
+    const activeUsers = await prisma.user.findMany({
+      where: {
+        status: true, // Pracownicy z aktywnym kontraktem
+      },
+    });
+
+    res.status(200).json(activeUsers);
+  } catch (error) {
+    console.error('Błąd podczas pobierania pracowników z aktywnym kontraktem:', error);
+    res.status(500).json({ error: 'Wystąpił błąd serwera' });
+  }
+};
