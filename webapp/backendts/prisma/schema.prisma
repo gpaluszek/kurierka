@@ -31,7 +31,7 @@ model Profile {
   userId    Int        @unique
   contracts Contract[]
   trails    Trail[]
-  records   Record[]
+  workLogs  WorkLog[]
 }
 
 model Contract {
@@ -91,22 +91,6 @@ model Category {
   trails      Trail[] @relation("TrailCategory")
 }
 
-model Record {
-  id         Int        @id @default(autoincrement())
-  date       DateTime
-  status     String
-  profileId  Int
-  profile    Profile    @relation(fields: [profileId], references: [id])
-  recordRout RecordRout[]
-}
-
-model RecordRout {
-  id        Int        @id @default(autoincrement())
-  nazwa     String
-  recordId  Int
-  record    Record     @relation(fields: [recordId], references: [id])
-}
-
 model CheckpointToTrail {
   id            Int      @id @default(autoincrement())
   checkpoint   Checkpoint @relation(fields: [checkpointId], references: [id])
@@ -114,13 +98,19 @@ model CheckpointToTrail {
   trail        Trail     @relation(fields: [trailId], references: [id])
   trailId      Int
 }
+model WorkLog {
+  id        Int        @id @default(autoincrement())
+  date      DateTime
+  status    String
+  profileId Int
+  profile   Profile    @relation(fields: [profileId], references: [id])
+  tasks     Task[]     // Relacja 1:n z modelem Task
+}
 
-// Dodaj model sesji
-model Session {
-  id        Int      @id @default(autoincrement())
-  sid       String
-  expires   DateTime
-  data      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+model Task {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String?
+  status      String?   // Może to być enum lub inny typ
+  workLogs    WorkLog[] // Zmiana relacji do WorkLog
 }

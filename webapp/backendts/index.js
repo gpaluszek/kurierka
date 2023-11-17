@@ -11,6 +11,8 @@ import RecordRout from "./routes/RecordRoute.js";
 import ImageRoute from "./routes/ImageRoute.js";
 import CountRoute from "./routes/CountRoute.js";
 import CommuniqueRoute from "./routes/CommuniqueRoute.js";
+import WorkLogRoute from "./routes/WorkLogRoute.js";
+
 dotenv.config();
 
 const app = express();
@@ -48,6 +50,7 @@ app.use(RecordRout);
 app.use(ImageRoute);
 app.use(CountRoute);
 app.use(CommuniqueRoute);
+app.use(WorkLogRoute);
 
 app.listen(process.env.APP_PORT, () => {
   console.log("Server up and running...");

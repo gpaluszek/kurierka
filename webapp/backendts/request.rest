@@ -238,3 +238,49 @@ Content-Type: application/json
   "trailId": 49,
   "checkpointIds": [12]
 }
+
+###
+
+POST http://localhost:5000/add-task
+Content-Type: application/json
+
+{
+  "profileId": 1,
+  "date": "2023-11-01",
+  "tasks": [
+    {
+      "title": "Wykonanie zadania 1",
+      "description": "Opis obowiązku 1",
+      "status": "Wykonany",
+      "workLog": { "connect": { "id": 9 } }
+    },
+    {
+      "title": "Wykonanie zadania 2",
+      "description": "Opis obowiązku 2",
+      "status": "Wykonany",
+      "workLog": { "connect": { "id": 9 } }
+    }
+  ]
+}
+
+
+###
+POST http://localhost:5000/add-taskid
+Content-Type: application/json
+
+{
+  "profileId": 1,
+  "date": "2023-11-16",
+  "tasks": [
+    {
+      "title": "Tytuł zadania",
+      "description": "Opis zadania",
+      "status": "SomeStatus"
+    }
+  ]
+}
+
+
+###
+GET http://localhost:5000/tasks/1?date=2023-11-16 
+Content-Type: application/json
