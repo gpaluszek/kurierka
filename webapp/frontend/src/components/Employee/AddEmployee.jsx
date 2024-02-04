@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
+import { QestionCircle } from "../../common/icons/icons";
+import { Tooltip } from 'react-tooltip';
 
 import {
   AvatarWoman,
@@ -53,6 +55,7 @@ const FormAddEmployee = () => {
     }
   };
 
+
   //   const dispatch = useDispatch();
   //   const navigate = useNavigate();
   //   const { isError
@@ -76,19 +79,23 @@ const FormAddEmployee = () => {
 
   //     navigate]);
   return (
-    <div>
+    <div className="main-container">
       <div className="model-form-add">
       {/* <p className="msg-error">{msg}</p> */}
       <div className="model-form-head">
-        <AddUserIcon className="table-header-panel-icon" />Dodawanie Użytkowników: Tworzenie Nowych Kont
+          <div className="model-form-head-panel">
+            <NavLink className="top-nav-dash-a first" to="/dashboard">Dashboard</NavLink> &#62; <NavLink className="top-nav-dash-a" to="/users">Lista Pracowników</NavLink> &#62; <NavLink className="top-nav-dash-a">Dodaj pracownika</NavLink>
+          </div>
+          <div className="table-header-panel-left">
+            <h1 className="teable-header-h1">Edytuj Pracownika </h1>
+            <div className="nothing" id="not-clickable" > <QestionCircle /></div>
+          </div>
       </div>
-      <div className="model-form-head">
-      <p className="model-form-head-info"> Na stronie "Dodawanie Użytkowników" możesz szybko tworzyć nowe konta dla pracowników. Po utworzeniu konta, możesz nadać użytkownikowi uprawnienia pracownika poprzez przypisanie kontraktu. To pozwala na dostęp do specjalnych funkcji i zadań w naszym systemie. </p>
-      </div>
+
         <div className="model-form-container">
         
         <form onSubmit={saveUser}>
-         
+        <div className="form-column-one">
             <label className="form-text-one">Imie*</label>
            
               
@@ -175,7 +182,8 @@ const FormAddEmployee = () => {
                 placeholder="Ulica"
               />
           
-        
+          </div>
+          <div className="form-column-two">
             <label className="form-text-one">Miasto</label>
          
               <input id="form-text-one"
@@ -250,10 +258,14 @@ const FormAddEmployee = () => {
        
           
           <button type="submit" className="model-from-input-submit">Dodaj użytkownika</button>
+          </div>
         </form>
         </div>
         
       </div>
+      <Tooltip anchorSelect="#not-clickable" place="bottom">
+            Na stronie "Dodawanie Użytkowników" możesz szybko tworzyć nowe konta dla pracowników. Po utworzeniu konta, możesz nadać użytkownikowi uprawnienia pracownika poprzez przypisanie kontraktu. To pozwala na dostęp do specjalnych funkcji i zadań w naszym systemie.
+      </Tooltip>
     </div>
   );
 };

@@ -1,44 +1,55 @@
 .model-form-add {
-    margin: 15px;
+    
     .model-form-head {
-        min-height: 70px;
-        background: #ebf3fe;
-        border-radius: 10px;
         display: flex;
-        align-items: center;
-        margin: 0 0 10px;
-        padding: 10px;
-        .table-header-panel-icon {
-            margin: 10px;
-            width: auto;
-            height: 45px;
-            background: #aecaf1;
-            padding: 10px;
-            border-radius: 10px;
+        flex-direction: column;
+        .model-form-head-panel {
+            text-decoration: none;
+            color: black;
+            padding: 5px 0;
+            .top-nav-dash-a.first {
+                padding: 0 10px 0 0 !important;
+            }
+            .top-nav-dash-a {
+                text-decoration: none;
+                color: black;
+                padding: 0 10px 0 10px;
+            }
         }
-        p.model-form-head-info {
-            border-left: 5px #3174ad;
-            border-left-style: dashed;
-            padding-left: 10px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            margin: 3px 0;
+        .table-header-panel-left {
+            display: flex;
+            padding: 5px 0;
+            .teable-header-h1 {
+                font-size: 24px;
+                font-weight: 600;
+            }
+            .nothing {
+                display: block;
+                height: 19px;
+                width: 19px;
+                margin-left: 10px;
+            }
         }
     }
     .model-form-container {
         width: 100%;
-        background: white;
-        border: 1px solid #ebf1f6;
-        border-radius: 10px;
-        box-shadow: rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;
-        border-collapse: collapse;
-        padding: 15px;
+        padding: 20px 0;
         form {
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+            .form-column-one{
+                width: 100%;
+                max-width: 40%;
+                margin: 0 20px 0 0;
+                
+            }
+            .form-column-two {
+                width: 100%;
+                max-width: 40%;
+            }
             .model-form-input-text {
                 display: block;
-                width: 60%;
+                width: 100%;
                 padding: 8px 16px;
                 font-size: 0.875rem;
                 font-weight: 400;
@@ -55,8 +66,8 @@
             }
             .model-from-input-submit {
                 display: block;
-                width: 60%;
-                padding: 10px 16px;
+                width: 100%;
+                padding: 6.5px 16px;
                 color: #ffffff;
                 background-color: #2196F3;
                 border: 1px solid #2196F3;

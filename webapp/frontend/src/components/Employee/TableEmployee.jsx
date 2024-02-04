@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { ArrowDown, ArrowUp, UsersIcon } from "../../common/icons/icons";
+import { ArrowDown, ArrowUp, QestionCircle, AddUser, SearchIcon } from "../../common/icons/icons";
 import { Link, NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css'
 
 const TableEmployee = () => {
   const [users, setUsers] = useState([]);
+  const [filteredUsers, setFilteredUsers] = useState([]);
   const [selectedRows, setSelectedRows] = useState([]);
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
+  const [filterStatus, setFilterStatus] = useState('all'); // 'all', 'active', 'inactive'
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     getUsers();
@@ -17,7 +21,51 @@ const TableEmployee = () => {
   const getUsers = async () => {
     const response = await axios.get("http://localhost:5000/users");
     setUsers(response.data);
+    applyFilters(response.data);
   };
+
+  const applyFilters = (data) => {
+    let filteredData = data;
+
+    // Filtruj po statusie
+    if (filterStatus === 'active') {
+      filteredData = filteredData.filter(user => user.status === true);
+    } else if (filterStatus === 'inactive') {
+      filteredData = filteredData.filter(user => user.status === false);
+    }
+
+    // Filtruj po wyszukiwaniu
+    if (searchQuery) {
+      const query = searchQuery.toLowerCase();
+      filteredData = filteredData.filter(user =>
+        user.name.toLowerCase().includes(query) || user.surname.toLowerCase().includes(query)
+      );
+    }
+
+    setFilteredUsers(filteredData);
+  };
+
+  const handleFilterChange = (status) => {
+    setFilterStatus(status);
+    applyFilters(users);
+  };
+
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleResetSearch = () => {
+    setSearchQuery('');
+    setFilterStatus('all'); 
+  };
+
+  useEffect(() => {
+    const delayDebounceFn = setTimeout(() => {
+      applyFilters(users);
+    }, 150);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchQuery, users, filterStatus]);
 
   const updateUserStatus = async (id) => {
     setSelectedUserId(id);
@@ -49,24 +97,48 @@ const TableEmployee = () => {
   };
 
   return (
-    <div>
+    <div className="main-container">
       <div className="table-model-container">
         <div className="table-header-panel">
-        <UsersIcon className="table-header-panel-icon" />Tabela Pracowników: Zarządzaj Efektywnie Zespołem
+          <NavLink className="top-nav-dash-a first" to="/dashboard">Dashboard</NavLink> &#62; <NavLink className="top-nav-dash-a" to="/users">Lista Pracowników</NavLink>
+        </div>
+        <div className="table-header-panel last ">
+          <div className="table-header-panel-left">
+            <h1 className="teable-header-h1">Lista Pracowników</h1>
+            <div className="nothing" id="not-clickable" > <QestionCircle /></div>
+          </div>
+          
+          <div className="table-header-panel-right">
+            <NavLink className="options-button" to="/adduser">
+              <AddUser className="icon-button-white"/> Dodaj użytkownika
+            </NavLink>
+          </div>
         </div>
         <div className="table-header-panel">
-        <p className="model-form-head-info " > Nasza "Tabela Pracowników" umożliwia łatwe zarządzanie zespołem. Możesz dodawać nowych pracowników, nadawać im uprawnienia i przypisywać kontrakty. To centralne miejsce, w którym śledzisz informacje o każdym członku zespołu </p>
+          <select className="table-select-filter" onChange={(e) => handleFilterChange(e.target.value)} value={filterStatus}>
+            <option className="table-select-option" value="all">Wszyscy</option>
+            <option className="table-select-option" value="active">Aktywni</option>
+            <option className="table-select-option" value="inactive">Nieaktywni</option>
+          </select>
+          <div className="table-search-bar">
+            <SearchIcon className="table-search-icon" />
+            <input className="table-search-input"
+              type="text"
+              placeholder="Wyszukaj pracownika..."
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+            
+          </div>
+          <button className="table-filter-reset-button" onClick={handleResetSearch}>
+              Reset
+            </button>
         </div>
-        <div className="table-header-panel">
-          <NavLink className="options-button" to="/adduser">
-            Dodaj użytkownika
-          </NavLink>
-        </div>
+       
         <table className="table-main-content">
           <thead>
             <tr className="table-main-tr">
-              <th>AV</th>
-              
+              <th className="th-td-one">#</th>
               <th>Imie Nazwisko</th>
               <th>Status</th>
               <th>Numer Telefonu</th>
@@ -75,15 +147,14 @@ const TableEmployee = () => {
             </tr>
           </thead>
           <tbody>
-            {users.map((user, index) => (
+            {filteredUsers.map((user, index) => (
               <React.Fragment key={user.id}>
                 <tr
                   key={user.uuid}
                   className="table-main-tr"
                   onClick={() => handleRowClick(index)}
                 >
-                  <td className="table-main-td">
-                    {/* {user.id} */}
+                  <td className="table-main-td th-td-one" >
                     {user.sex === "Kobieta" ? (
                       <div className="circle-avatar-women">
                         {user &&
@@ -100,11 +171,10 @@ const TableEmployee = () => {
                       </div>
                     )}</td>
                   <td className="employee-profile table-main-td">
-                    
                     {user && `${user.name} ${user.surname}`}
                   </td>
                   <td className="table-main-td">
-                    {user.status === true ? "Aktywny" : "Nieaktywny"}
+                    {user.status === true ? <div className="user-status-active">Aktywny</div> : <div className="user-status-inactive">Nieaktywny</div>}
                   </td>
                   <td className="table-main-td">
                     {user && `${user.phoneNumber} `}
@@ -126,19 +196,19 @@ const TableEmployee = () => {
                       <div className="expanded-content">
                         <Link
                           to={`/users/edit/${user.id}`}
-                          className="confirmation-button-style-submit"
+                          className="confirmation-button-style-submit style-button"
                         >
                           Edit
                         </Link>
                         <Link
                           to={`/users/${user.id}`}
-                          className="confirmation-button-style-submit"
+                          className="confirmation-button-style-submit style-button"
                         >
                           Kontrakty
                         </Link>
                         <button
                           onClick={() => updateUserStatus(user.id)}
-                          className="confirmation-button-style-delete"
+                          className="confirmation-button-style-delete style-button"
                         >
                           Wyłącz konto
                         </button>
@@ -146,30 +216,32 @@ const TableEmployee = () => {
                       {showConfirmation && (
                         <div className="confirm-important">
                           <div className="confirmation-content">
-                            <h3>Potwierdź</h3>
-                           <p>Czy na pewno chcesz zmienić status użytkownika? <br />
-                           Wybierz status</p>
+                            <h1 className="confirmation-content-h1">Potwierdz działanie</h1>
+                            <p className="confirmation-p">Czy na pewno chcesz zmienić status użytkownika? <br />
+                              Po wykonaniu tej akcji, użytkowni utraci dostęp do platformy.</p>
                             
-                            <div className="confirm-important-button-flex">
+                              <div className="confirm-important-button-options">
                               <button
-                                className="confirm-important-button"
-                                onClick={() => handleConfirmStatus(true)}
-                              >
-                                Aktywny
-                              </button>
-                              <button
-                                className="confirmation-button-style-cancel"
-                                onClick={() => handleConfirmStatus(false)}
-                              >
-                                Nieaktywny
-                              </button>
-                              <button
-                                className="confirmation-button-style-cancel"
+                                className="confirmation-button-style-cancel style-button"
                                 onClick={handleCancelStatus}
                               >
                                 Anuluj
                               </button>
-                            </div>
+                              <button
+                                className="confirm-important-button style-button"
+                                onClick={() => handleConfirmStatus(true)}
+                              >
+                                Status Aktywny
+                              </button>
+                              <button
+                                className="confirm-important-button style-button"
+                                onClick={() => handleConfirmStatus(false)}
+                              >
+                                Status Nieaktywny
+                              </button>
+                              </div>
+                              
+                          
                           </div>
                         </div>
                       )}
@@ -181,6 +253,9 @@ const TableEmployee = () => {
           </tbody>
         </table>
       </div>
+      <Tooltip anchorSelect="#not-clickable" place="bottom">
+        Nasza "Tabela Pracowników" umożliwia łatwe zarządzanie zespołem.<br /> Możesz dodawać nowych pracowników, nadawać im uprawnienia i przypisywać kontrakty. <br />To centralne miejsce, w którym śledzisz informacje o każdym członku zespołu.
+      </Tooltip>
     </div>
   );
 };

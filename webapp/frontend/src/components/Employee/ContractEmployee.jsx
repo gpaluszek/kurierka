@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, NavLink, useParams } from "react-router-dom";
-import { ArrowDown, ArrowUp, DocumentIcon } from "../../common/icons/icons";
-
+import { ArrowDown, ArrowUp, QestionCircle, DocumentIcon, AddContract } from "../../common/icons/icons";
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css'
 const ContractEmployeeMain = () => {
   const [user, setUser] = useState(null);
   const { id } = useParams();
@@ -30,24 +31,28 @@ const ContractEmployeeMain = () => {
   };
 
   return (
-    <div>
+    <div className="main-container">
       {user ? (
         <div className="table-model-container"> 
-          <div className="table-header-panel">
-            <DocumentIcon className="table-header-panel-icon" />Kontrakty pracownika - {user.name} {user.surname}
+         <div className="table-header-panel">
+          <NavLink className="top-nav-dash-a first" to="/dashboard">Dashboard</NavLink> &#62; <NavLink className="top-nav-dash-a" to="/users">Lista Pracowników</NavLink> &#62; <NavLink className="top-nav-dash-a" to="">Kontrakty</NavLink>
+        </div>
+        <div className="table-header-panel last ">
+          <div className="table-header-panel-left">
+            <h1 className="teable-header-h1">Kontrakty Pracownika</h1>
+            <div className="nothing" id="not-clickable" > <QestionCircle /></div>
           </div>
           
-          <div className="table-header-panel">
-            <p className="model-form-head-info">Przeglądaj kontrakty zawarte przez konkretnego pracownika. Wyświetlaj informacje na temat stanowiska, daty rozpoczęcia i zakończenia kontraktu oraz rodzaju kontraktu.
-          </p>
-          </div>
-          
-          <div className="table-header-panel">
+          <div className="table-header-panel-right">
             <Link className="options-button" to={`/employee/${id}/contracts`}>
-              Dodaj Umowe
+            <AddContract className="icon-button-white"/> Dodaj Umowe
             </Link>
           </div>
-          
+        </div>
+          <div className="table-header-panel">
+          Kontrakty pracownika - {user.name} {user.surname}
+          </div>
+        
           <table className="table-main-content">
             <thead>
               <tr className="table-main-tr">
@@ -85,7 +90,7 @@ const ContractEmployeeMain = () => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="5">Brak danych</td>
+                  <td className="error-table-info" colSpan="5">Brak dostępnych danych, pojawił się błąd lub użytkownik nie ma przypisanych kontraktów.</td>
                 </tr>
               )}
             </tbody>
@@ -94,6 +99,9 @@ const ContractEmployeeMain = () => {
       ) : (
         <div>Loading...</div>
       )}
+      <Tooltip anchorSelect="#not-clickable" place="bottom">
+      Przeglądaj kontrakty zawarte z konkretnym pracownikiem, wyświetlając informacje dotyczące stanowiska,<br /> daty rozpoczęcia i zakończenia kontraktu oraz rodzaju kontraktu.
+      </Tooltip>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import moment from "moment";
 const prisma = new PrismaClient();
+import dayjs from 'dayjs';
 
 export const addtask = async (req, res) => {
   try {
@@ -98,78 +99,104 @@ const { profileId, date, title, description } = req.body;
 
 // Kontroler do dodawania zadania
 // Kontroler do dodawania zadania
-export const addTaskId = async (req, res) => {
-  try {
-    // Destrukturyzacja danych z zapytania
-    const { profileId, date, tasks } = req.body;
 
-    // Sprawdzenie, czy istnieje profil o danym ID
+
+// ...
+
+// ...
+
+
+// ... reszta kodu
+
+export const addTasksId = async (req, res) => {
+  try {
+    const { profileId, dates, tasks } = req.body;
+    const { description, status } = tasks[0]; // Przeniesienie description i status poza pętlę
+
     const existingProfile = await prisma.profile.findUnique({
       where: { id: profileId },
     });
 
-    // Jeśli profil nie istnieje, zwróć błąd
     if (!existingProfile) {
       return res.status(404).json({ error: 'Profil pracownika nie istnieje.' });
     }
 
-    // Konwersja daty na obiekt JavaScript
-    const workDate = new Date(date);
+    const results = [];
 
-    // Sprawdzenie, czy istnieje już taki dzień pracy
-    const existingWorkDay = await prisma.workLog.findFirst({
-      where: {
-        profileId: profileId,
-        date: workDate,
-      },
-    });
+    // Sprawdź czy "dates" to pojedyncza data czy zakres dat
+    const isSingleDate = !Array.isArray(dates);
+    const dateRange = isSingleDate ? [dates] : dates;
 
-    // Jeśli dzień pracy istnieje, dodaj nowe zadanie
-    if (existingWorkDay) {
-      const updatedWorkDay = await prisma.workLog.update({
-        where: { id: existingWorkDay.id },
-        data: {
-          tasks: {
-            create: tasks.map((task) => ({
-              title: task.title,
-              description: task.description,
-              status: task.status,
-            })),
-          },
-        },
-        include: {
-          tasks: true,
-        },
-      });
+    for (const date of dateRange) {
+      const workDate = new Date(date);
 
-      return res.status(200).json(updatedWorkDay);
-    } else {
-      // Jeśli dzień pracy nie istnieje, utwórz nowy dzień pracy z zadaniami
-      const newWorkDay = await prisma.workLog.create({
-        data: {
-          profile: { connect: { id: profileId } },
+      // Sprawdź, czy data jest poprawna
+      if (isNaN(workDate.getTime())) {
+        return res.status(400).json({ error: 'Nieprawidłowy format daty.' });
+      }
+
+      const existingWorkDay = await prisma.workLog.findFirst({
+        where: {
+          profileId: profileId,
           date: workDate,
-          status: 'Obecny',
-          tasks: {
-            create: tasks.map((task) => ({
-              title: task.title,
-              description: task.description,
-              status: task.status,
-            })),
-          },
-        },
-        include: {
-          tasks: true,
         },
       });
 
-      return res.status(201).json(newWorkDay);
+      if (existingWorkDay) {
+        const updatedWorkDay = await prisma.workLog.update({
+          where: { id: existingWorkDay.id },
+          data: {
+            tasks: {
+              create: tasks.map(task => ({ ...task, description, status })),
+            },
+          },
+          include: {
+            tasks: true,
+          },
+        });
+
+        results.push(updatedWorkDay);
+      } else {
+        const newWorkDay = await prisma.workLog.create({
+          data: {
+            profile: { connect: { id: profileId } },
+            date: workDate,
+            status: 'Oczekuje', // Czy tutaj też chcesz ustawić status?
+            tasks: {
+              create: tasks.map(task => ({ ...task, description, status })),
+            },
+          },
+          include: {
+            tasks: true,
+          },
+        });
+
+        results.push(newWorkDay);
+      }
     }
+
+    return res.status(201).json(results);
   } catch (error) {
-    console.error('Błąd podczas tworzenia dnia pracy:', error);
-    return res.status(500).json({ error: 'Wystąpił błąd podczas tworzenia dnia pracy.', details: error.message });
+    console.error('Błąd podczas dodawania zadań:', error);
+    return res.status(500).json({ error: 'Wystąpił błąd podczas dodawania zadań.', details: error.message });
   }
 };
+
+
+
+
+
+
+
+
+// ...
+
+
+// ...
+
+
+
+
 
 
 

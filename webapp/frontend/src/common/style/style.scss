@@ -9,16 +9,23 @@
 @import "./calendar.scss";
 @import "./communique.scss";
 @import "./ActionRoute.scss";
+@import "./models/xlsxModel.scss";
+
+.react-tooltip {
+    z-index: 1;
+}
+
 
 * {
     margin: 0;
     padding: 0;
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     box-sizing: border-box;
 }
 .dash-container {
     display: flex;
+    min-height: 100vh;
 }
 .circle-avatar-women {
     width: 40px;
@@ -41,10 +48,16 @@
     margin: 0 10px;
 }
 main {
+    
     width: 100%;
-    background: #ffffff;
+    background: $menu-background-color;
     .main-container {
         width: 100%;
+        background: white;
+        border: 1px #edeff3 solid;
+        border-radius: 14px;
+        margin: 15px 15px 15px 0;
+        padding: 20px;
         .main-left {
             width: 100%;
             max-width: 73.116%;

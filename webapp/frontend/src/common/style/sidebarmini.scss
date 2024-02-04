@@ -1,8 +1,45 @@
 .sidebar-small {
     .nav-logo {
+        margin: 10px 0 0 0;
         .nav-logo-a {
             .sidebar-logo-text {
                 display: none;
+            }
+        }
+    }
+    .nav-profile {
+        display: flex;
+        flex-direction: column;
+        margin: 15px 0 0;
+        .nav-profile-user {
+            .nav-profile-user-avatar {
+                .circle-avatar-man {
+                    margin: 0;
+                }
+            }
+            .nav-top-user-info {
+                display: none;
+            }
+        }
+        .nav-profile-more {
+            padding: 0 5px;
+            display: flex;
+            justify-content: space-around;
+            margin: 25px 0 0;
+            flex-direction: column;
+            a.nav-profile-setting {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 2px 0;
+                padding: 8px 0;
+            }
+            .nav-profile-setting-button {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                margin: 2px 0 !important;
+                padding: 8px 0 !important;
             }
         }
     }
@@ -67,3 +104,5 @@
         }
     }
 }
+
+

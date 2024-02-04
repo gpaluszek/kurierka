@@ -116,14 +116,14 @@ Content-Type: application/json
 
 
 
-### Dodawanie nowej trasy
+### Dodawanie nowej trasy POPRAWNE
 POST http://localhost:5000/addTrail
 Content-Type: application/json
 
 {
   "name": "Trail Name",
   "description": "Trail Description",
-  "categoryId": 1
+  "categoryId": 18
 }
 
 ###
@@ -166,13 +166,13 @@ Content-Type: application/json
   "status": "obecny",
   "routeName": "Tasd b"
 }
-###
+### POPRAWNE 
 POST http://localhost:5000/addCheckpointToTrail
 Content-Type: application/json
 
 {
-  "checkpointId": 1,
-  "trailId": 46
+  "checkpointId": 11,
+  "trailId": 49
 }
 ###
 GET http://localhost:5000/user/2/records
@@ -269,7 +269,7 @@ POST http://localhost:5000/add-taskid
 Content-Type: application/json
 
 {
-  "profileId": 1,
+  "profileId": 0,
   "date": "2023-11-16",
   "tasks": [
     {
@@ -280,7 +280,47 @@ Content-Type: application/json
   ]
 }
 
+###
+POST http://localhost:5000/add-tasksid
+Content-Type: application/json
+
+{
+  "profileId": 1,
+  "dates": ["2023-01-15"],
+  "tasks": [
+    {
+      "title": "Tytuł zadania 1",
+      "description": "Opis zadania 1",
+      "status": "SomeStatus"
+    }
+  ]
+}
+
+
+
+
 
 ###
 GET http://localhost:5000/tasks/1?date=2023-11-16 
 Content-Type: application/json
+
+
+
+###
+POST http://localhost:5000/addDataToDatabaseXLSX 
+Content-Type: application/json
+
+{
+  "excelData": [
+    ["kod1", "miasto1", "adres1", "staraTrasa1", "nowaTrasa1"],
+    ["kod2", "miasto2", "adres2", "staraTrasa2", "nowaTrasa2"],
+    ["kod3", "miasto3", "adres3", "staraTrasa3", "nowaTrasa3"]
+  ]
+}
+
+###
+POST http://localhost:5000/getTasksForToday
+
+
+###
+GET  http://localhost:5000/CheckSession

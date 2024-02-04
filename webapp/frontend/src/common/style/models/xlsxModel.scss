@@ -1,0 +1,87 @@
+.xlsx-model {
+    border: 1px solid #b1d6ff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+
+.xlsx-table {
+    margin: 15px 0;
+    .xlsx-table-tables {
+        margin: 10px 0;
+        .xlsx-table-tables-buttons {
+            background: #ebf1f6;
+            border: 1px solid #adadad;
+            padding: 5px;
+            margin: 0 5px 0 0;
+            border-radius: 3px;
+        }
+    }
+    .table-table-main {
+        width: 100%;
+        border-collapse: collapse;
+        border-color: #c9ced7;
+        text-align: center;
+    }
+    .xlsx-button {
+        margin: 10px 0;
+        background: none;
+        padding: 8px;
+        border-radius: 4px;
+        border: 1px solid #2196F3;
+        color: #2196F3;
+    }
+}
+
+.calendarMain-container {
+    display: flex;
+    .custom-timeline {
+        .timeline-options {
+            margin: 15px 0;
+            .timeline-setting-button {
+                border: 1px solid black;
+                background: black;
+                text-decoration: none;
+                color: white;
+                border-radius: 14px;
+                padding: 6px 10px;
+            }
+        }
+        .week-navigation {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            .timeline-button-function {
+                padding: 8px 12px;
+                margin: 0 10px;
+                border: 1px solid #c0dce9;
+                background: #607D8B;
+                border-radius: 8px;
+                color: white;
+            }
+        }
+        .table-timeline {
+            border-collapse: collapse !important;
+            .table-timeline-thead {
+                
+                tr { 
+                   
+                    th {
+                        border: 1px solid  #edeff3;
+                        padding: 5px;
+                    }
+                }
+            }
+            .table-timeline-tbody {
+               
+                tr {
+                   
+                    td {
+                        border: 1px solid #edeff3;
+                        padding: 5px;
+                    }
+                }
+            }
+        }
+    }
+}

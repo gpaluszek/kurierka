@@ -3,9 +3,12 @@ import axios from "axios";
 import { ArrowDown, ArrowUp } from "../../common/icons/icons";
 import { NavLink, useNavigate  } from "react-router-dom";
 import handleGenerateReport from "./RouteReport";
+import { Tooltip } from 'react-tooltip';
+import 'react-tooltip/dist/react-tooltip.css'
 import {
   HeartFav,
-  FsquareIcon
+  FsquareIcon,
+  QestionCircle, 
 } from "../../common/icons/icons.jsx";
 
 const TableRoutes = () => {
@@ -167,22 +170,16 @@ const TableRoutes = () => {
   };
 
   return (
-    <div>
+    <div  className="main-container"> 
       <div className="table-model-container">
-
-
-
-
-
-
-
       {showDeleteConfirmation && (
           <div className="confirm-important">
             
             <div className="confirmation-content">
-              <h3>Potwierdź usunięcie trasy</h3>
-              <p>Czy na pewno chcesz usunąć trasę "{routeToDelete?.name}"?</p>
-              <div className="confirm-important-button-flex">
+            <h1 className="confirmation-content-h1">Potwierdz działanie</h1>
+            
+              <p className="confirmation-p">Czy na pewno chcesz usunąć trasę "{routeToDelete?.name}"?</p>
+              <div className="confirm-important-button-options">
                 <button className="confirm-important-button" onClick={handleDeleteConfirmation}>Usuń</button>
                 <button className="confirmation-button-style-cancel" onClick={() => setShowDeleteConfirmation(false)}>Anuluj</button>
               </div>
@@ -200,10 +197,17 @@ const TableRoutes = () => {
 
 
 
-
         <div className="table-header-panel">
-        <FsquareIcon className="table-header-panel-icon" />Zarządzanie Trasami: Twoja Centrum Kontroli
+                  <NavLink className="top-nav-dash-a first" to="/dashboard">Dashboard</NavLink> &#62; <NavLink className="top-nav-dash-a" to="/users">Lista Pracowników</NavLink>
         </div>
+          <div className="table-header-panel last ">
+          <div className="table-header-panel-left">
+            <h1 className="teable-header-h1">Lista Pracowników</h1>
+            <div className="nothing" id="not-clickable" > <QestionCircle /></div>
+          </div>
+          
+          </div>
+
         <div className="table-header-panel">
          <p className="model-form-head-info">Na tej stronie znajdziesz spis wszystkich tras dostępnych w Twojej firmie. To narzędzie pozwala na szybkie wyszukiwanie i przeglądanie dostępnych tras oraz szczegółowych informacji o każdej z nich.</p>
         </div>
@@ -220,8 +224,8 @@ const TableRoutes = () => {
             <div className="confirmation-popup">
               <div className="confirmation-opacity"></div>
               <div className="confirmation-content">
-                <h3>Stwórz nową trasę</h3>
-                <span>W tym miejscu masz możliwość dodania trasy dla Twoich pracowników. Wystarczy wypełnić przygotowany poniżej formularz, aby wypełnić jeden krok w procesie dodawania.</span>
+                <h1 className="confirmation-content-h1">Stwórz nową trasę</h1>
+                <p className="confirmation-p">W tym miejscu masz możliwość dodania trasy dla Twoich pracowników. Wystarczy wypełnić przygotowany poniżej formularz, aby wypełnić jeden krok w procesie dodawania.</p>
                 <div className="confirmation-top-pop">
                  <HeartFav className="confirmationHeartFav"/> Przygotuj trasę, tworząc kategorie i punkty docelowe, <br /> a następnie połącz wszystko, by uzyskać kompletny plan.
                 </div>
@@ -263,7 +267,7 @@ const TableRoutes = () => {
                       ))}
                     </select>
 
-                    <div className="confirmation-button-container">
+                    <div className="confirm-important-button-options">
                        <button className="confirmation-button-style-submit" type="submit">Zapisz</button>
                        <button className="confirmation-button-style-cancel" type="button" onClick={() => setShowAddRouteForm(false)}>Anuluj</button>
                     </div>
@@ -279,8 +283,9 @@ const TableRoutes = () => {
             <div className="confirmation-popup">
               <div className="confirmation-opacity"></div>
               <div className="confirmation-content">
-                <h3>Stwórz nową kategorię</h3>
-                <span>W tym miejscu masz możliwość dodania nowej kategorii dla Twoich tras. Wypełnij poniższy formularz, aby dodać nową kategorię do kolekcji.</span>
+                 <h1 className="confirmation-content-h1">Stwórz nową kategorię</h1>
+                W tym miejscu masz możliwość dodania trasy dla Twoich pracowników. Wystarczy wypełnić przygotowany poniżej formularz, aby wypełnić jeden krok w procesie dodawania.
+                <p className="confirmation-p">W tym miejscu masz możliwość dodania nowej kategorii dla Twoich tras.<br /> Wypełnij poniższy formularz, aby dodać nową kategorię do kolekcji.</p>
                 <div className="confirmation-top-pop">
                   <HeartFav className="confirmationHeartFav"/> Przygotuj trasę, tworząc kategorie i punkty docelowe, <br /> a następnie połącz wszystko, by uzyskać kompletny plan.
                  </div>
@@ -307,7 +312,7 @@ const TableRoutes = () => {
                         setNewCategoryDescription(e.target.value)
                       }
                     />
-                    <div className="confirmation-button-container">
+                    <div className="confirm-important-button-options">
                       <button className="confirmation-button-style-submit" type="submit">Zapisz</button>
                       <button className="confirmation-button-style-cancel" type="button" onClick={() => setShowAddCategoryForm(false)}>Anuluj</button>
                    </div>
@@ -327,8 +332,8 @@ const TableRoutes = () => {
             <div className="confirmation-popup">
               <div className="confirmation-opacity"></div>
               <div className="confirmation-content">
-                <h3>Stwórz nową trasę</h3>
-                <span>W tym miejscu masz możliwość dodania trasy dla Twoich pracowników. Wystarczy wypełnić przygotowany poniżej formularz, aby wypełnić jeden krok w procesie dodawania.</span>
+                <h1 className="confirmation-content-h1">Stwórz nową trasę</h1>
+                <p className="confirmation-p">W tym miejscu masz możliwość dodania trasy dla Twoich pracowników. <br />Wystarczy wypełnić przygotowany poniżej formularz, aby wypełnić jeden krok w procesie dodawania.</p>
                 <div className="confirmation-top-pop">
                   <HeartFav className="confirmationHeartFav"/> Przygotuj trasę, tworząc kategorie i punkty docelowe, <br /> a następnie połącz wszystko, by uzyskać kompletny plan.
                 </div>
@@ -351,9 +356,9 @@ const TableRoutes = () => {
                     ))}
                     {selectedCategoryId && (
                       <div className="confirm-important">
-                        <h3>Potwierdź</h3>
-                        <p>Czy na pewno chcesz usunąć tę kategorię?</p>
-                        <div className="confirm-important-button-flex">
+                        <h1 className="confirmation-content-h1">Potwierdz działanie</h1>
+                        <p className="confirmation-p">Czy na pewno chcesz usunąć tę kategorię?</p>
+                        <div className="confirm-important-button-options">
                           <button className="confirm-important-button" onClick={handleDeleteCategory} > Potwierdź usunięcie
                           </button>
                           <button className="confirmation-button-style-cancel" type="button" onClick={() => setSelectedCategoryId(null)}> Anuluj
@@ -393,7 +398,7 @@ const TableRoutes = () => {
                   <td className="table-main-td">{route.description}</td>
                   <td className="table-main-td">{route.pointsCount}</td>
                   <td className="table-main-td">{route.category || "Brak kategorii"}</td>
-                  <td className="table-main-td table-main-setting">
+                  <td className="table-main-td table-main-setting setting-routes">
                   <button className="table-main-setting-grey" onClick={() => navigateToAddPoints(route.id)}>Dodaj punkty</button>
                     <button className="table-main-setting-grey" onClick={() => handleGenerateReport(route)}>Raport PDF</button>
                     <button className="confirmation-button-style-delete" onClick={() => handleDeleteRoute(route)}>Usuń trasę</button>
@@ -434,6 +439,9 @@ const TableRoutes = () => {
         </table>
 
       </div>
+      <Tooltip anchorSelect="#not-clickable" place="bottom">
+      Na tej stronie znajdziesz spis wszystkich tras dostępnych w Twojej firmie. To narzędzie pozwala na szybkie wyszukiwanie i przeglądanie dostępnych tras oraz szczegółowych informacji o każdej z nich.
+      </Tooltip>
     </div>
   );
 };

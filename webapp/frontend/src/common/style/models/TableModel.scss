@@ -1,23 +1,88 @@
 .table-model-container {
-    margin: 15px;
     display: block;
    
     .table-header-panel {
-        min-height: 70px;
-        background: #ebf3fe;
-        border-radius: 10px;
         display: flex;
         align-items: center;
-        margin: 0 0 10px;
-        padding: 10px;
+        padding: 5px 0;
+        .table-header-panel-left {
+            display: flex;
+        }
+
         p.model-form-head-info {
-            border-left: 5px #3174ad;
-            border-left-style: dashed;
-            padding-left: 10px;
             padding-top: 5px;
             padding-bottom: 5px;
-            margin: 3px 0;
         }   
+        .top-nav-dash-a  {
+            text-decoration: none;
+            color: black;
+            padding: 0 10px;
+        }
+        .first {
+            padding: 0 10px 0 0 !important;
+        }
+        .teable-header-h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+        .nothing {
+            display: block;
+            height: 19px;
+            width: 19px;
+            margin-left: 10px;
+        }
+        .table-select-filter {
+            width: 100%;
+            max-width: 150px;
+            padding: 8px;
+            border: 1px solid #d2d7df;
+            display: flex;
+            border-radius: 8px;
+        }
+
+        .table-search-bar {
+            width: 100%;
+            max-width: 300px;
+            padding: 8px;
+            border: 1px solid #d2d7df;
+            display: flex;
+            border-radius: 8px;
+            margin: 0 10px;
+            .table-search-icon {
+                stroke: #70798d;
+                margin-right: 8px;
+            }
+            .table-search-input {
+                width: 100%;
+                border: none;
+            }
+        }
+        .table-filter-reset-button {
+            width: 100%;
+            max-width: 100px;
+            padding: 8px;
+            border: 1px solid #5fabff;
+            display: flex;
+            border-radius: 8px;
+            justify-content: center;
+            color: #3f8fe7;
+            background: none;
+            transition: 0.5s;
+        }
+        .table-filter-reset-button:hover {
+            width: 100%;
+            max-width: 100px;
+            padding: 8px;
+            border: 1px solid #5fabff;
+            display: flex;
+            border-radius: 8px;
+            justify-content: center;
+            color: #ffffff;
+            background: #5fabff;
+        }
+    }
+    .last {
+        justify-content: space-between;
     }
 }
 .table-header-panel-icon {
@@ -31,13 +96,22 @@
 }
 
 .options-button {
-    background: #5d87ff;
-    border: none;
-    padding: 10px 20px;
-    margin:0 10px 0 0;
-    border-radius: 5px;
+    background: #1c1c1c;
+    padding: 6px 10px;
+    margin: 0 10px 0 0;
+    border-radius: 9px;
     color: white;
     text-decoration: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .icon-button-white {
+        stroke: white;
+        width: 15px;
+        height: 14px;
+        margin-right: 4px;
+    }
 }
 
 .confirmation-opacity {
@@ -53,6 +127,7 @@
     position: fixed;
     left: 0;
     top: 0;
+    
     .confirmation-content {
         position: fixed;
         background: white;
@@ -144,6 +219,13 @@
 .expanded-content {
     padding: 15px;
     border-bottom: 1px solid #d8dee3;
+    p {
+
+    }
+    ul {
+        list-style: none;
+        margin: 10px 0;
+    }
 }
 .confirmation-button-style-submit {
     background: #539BFF;
@@ -155,12 +237,14 @@
     text-decoration: none;
 }
 .confirmation-button-style-cancel {
-    background: #2A3547;
-    padding: 6px 15px;
-    border-radius: 100px;
-    border: 1px solid #2A3547;
-    color: white;
+    background: none;
+    padding: 6px 31px;
+    color: red;
     text-decoration: none;
+    width: 100px;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid red;
 }
 .confirmation-button-style-delete {
     background:#fa896b;
@@ -171,13 +255,31 @@
     text-decoration: none;
     margin-right: 10px;
 }
+.confirm-important-button-options {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 15px 0;
+}
+.error-table-info {
+    padding: 10px;
+}
+.confirmation-p {
+    text-align: left;
+    padding: 5px 0;
+    margin: 10px 0;
+}
+.confirmation-content-h1 {
+    font-size: 17px;
+    margin: 10px 0;
+}
 .confirm-important-button {
-    border-radius: 100px;
-    background: #fa896b;
-    border: 1px solid #fa896b;
+    border-radius: 8px;
+    background: #3577ff;
+    border: 1px solid #2762db;
     color: white;
     padding: 6px 15px;
-    margin: 10px 0;
+    margin: 0 0 0 10px;
 }
 .table-main-setting-grey {
     border-radius: 100px;
@@ -202,9 +304,15 @@
     height: max-content;
     background: white;
     text-align: center;
-    max-width: 400px;
+    max-width: 600px;
     padding: 30px;
-    border: 1px solid #ccd3dd;
+    border: 1px solid #eceef2;
+    border-radius: 8px;
+    .confirmation-content{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
     .confirm-important-button-flex {
         display: flex;
         flex-direction: column;
@@ -221,6 +329,7 @@
     border-radius: 10px;
     box-shadow: rgba(145, 158, 171, 0.2) 0px 0px 2px 0px, rgba(145, 158, 171, 0.12) 0px 12px 24px -4px;
     border-collapse: collapse;
+    margin-top: 15px;
     thead {
         border: inherit;
         .table-main-tr{
@@ -228,7 +337,6 @@
             
             th{
                 padding: 16px 16px;
-                border-bottom: inherit;
                 text-align: left;
                 font-weight: 400;
             }
@@ -253,15 +361,45 @@
                     border: none;
                     background: none;
                     height: 22px;
+                    width: 24px;
                 }
             }
             .table-main-setting{
+                width: 24px;
+                
+            }
+            .setting-routes {
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;
-                
+                width: auto !important;
             }
         }
     }
     
+}
+.th-td-one {
+    width: auto;
+    padding: 16px 0px !important;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user-status-active {
+    border: 1px solid #20a067;
+    border-radius: 14px;
+    text-align: center;
+    background: #e7fef3;
+    color: #20a067;
+    width: 76px;
+}
+.user-status-inactive {
+
+    border: 1px solid #727c8a;
+    border-radius: 14px;
+    text-align: center;
+    background: #f0f2f5;
+    color: #727c8a;
+    width: 100px;
 }

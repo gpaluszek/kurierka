@@ -17,6 +17,7 @@ import AddExcel from "./pages/AddExcel";
 import MeProfiles from "./pages/MeProfile";
 import ChangePassword from "./components/User/ChangePassword";
 import AddEvent from "./pages/AddEvent";
+import Map from "./pages/MapMain";
 function App() {
   return (
     <div>
@@ -40,6 +41,8 @@ function App() {
           <Route path="/me" element={<MeProfiles/>} />
           <Route path="/me/changepassword" element={<ChangePassword/>} />
           <Route path="/timeline/addevent" element={<AddEvent/>} />
+          <Route path="/map" element={<Map/>} />
+         
         </Routes>
       </BrowserRouter> 
     </div>

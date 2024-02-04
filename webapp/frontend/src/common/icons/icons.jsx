@@ -52,11 +52,10 @@ export  const TickSquareIcon = ({ className, style  }) =>  {
 };
 export  const CalendarIcon = ({ className, style  }) =>  {
   return (
-    <svg className={className} style={style} id="Iconly_Broken_Calendar" data-name="Iconly/Broken/Calendar" xmlns="http://www.w3.org/2000/svg" width="13" height="14" viewBox="0 0 13 14">
-  <g id="Calendar">
-    <path id="Calendar-2" data-name="Calendar" d="M4.063,14C1.369,14,0,12.817,0,10.49V4.7A3.15,3.15,0,0,1,1.5,1.728a.508.508,0,0,1,.528-.019.492.492,0,0,1-.051.886A2.176,2.176,0,0,0,.993,4.7v.185h9.162a.489.489,0,1,1,0,.978H.993V10.49c0,1.777.892,2.514,3.071,2.526H8.937c2.148,0,3.065-.755,3.065-2.533V4.694A2.2,2.2,0,0,0,9.716,2.217v.471a.5.5,0,0,1-1-.037V.471A.483.483,0,0,1,8.878.129.5.5,0,0,1,9.238,0a.5.5,0,0,1,.477.514v.725C11.889,1.443,13,2.608,13,4.7V10.49C13,12.817,11.631,14,8.937,14ZM8.9,10.558a.623.623,0,0,1,.628-.619H9.521a.634.634,0,0,1,.448.179.616.616,0,0,1,.186.44.628.628,0,0,1-1.256,0Zm-3.015,0a.628.628,0,1,1,.628.619A.624.624,0,0,1,5.884,10.558Zm-3.008,0A.624.624,0,0,1,3.5,9.938H3.5a.632.632,0,0,1,.448.179.613.613,0,0,1,.186.44.628.628,0,0,1-1.256,0ZM8.9,8.05a.623.623,0,0,1,.628-.619H9.521a.631.631,0,0,1,.448.179.616.616,0,0,1,.186.44.628.628,0,0,1-1.256,0Zm-3.015,0a.628.628,0,1,1,.628.619A.624.624,0,0,1,5.884,8.05Zm-3.008,0A.624.624,0,0,1,3.5,7.431H3.5a.629.629,0,0,1,.448.179.613.613,0,0,1,.186.44.628.628,0,0,1-1.256,0Zm.892-4.9a.493.493,0,0,1-.484-.5V.515a.5.5,0,0,1,1,0V1.19H7.122a.489.489,0,1,1,0,.978H4.271v.489a.487.487,0,0,1-.148.348.5.5,0,0,1-.35.141Z" fill="#717078"/>
-  </g>
+    <svg className={className} style={style}  id="Calendar" xmlns="http://www.w3.org/2000/svg" width="19.5" height="21.5" viewBox="0 0 19.5 21.5">
+  <path id="Combined_Shape" data-name="Combined Shape" d="M5.521,21.5C2.115,21.5,0,19.4,0,16.023V6.973A5,5,0,0,1,4.965,1.6V.75a.75.75,0,0,1,1.5,0v.83h6.578V.75a.75.75,0,0,1,1.5,0V1.6a5.382,5.382,0,0,1,3.532,1.46A5.379,5.379,0,0,1,19.5,6.976V16.1c0,3.332-2.116,5.4-5.522,5.4ZM1.5,16.023C1.5,18.588,2.928,20,5.521,20h8.458C16.572,20,18,18.615,18,16.1V8.9H1.5ZM18,7.4V6.973a3.862,3.862,0,0,0-.987-2.855A3.867,3.867,0,0,0,14.543,3.1v.938a.75.75,0,1,1-1.5,0V3.08H6.466v.961a.75.75,0,0,1-1.5,0V3.1A3.486,3.486,0,0,0,1.5,6.973V7.4Zm-4.553,8.542a.746.746,0,0,1,.745-.75H14.2a.75.75,0,1,1-.754.75Zm-4.437,0a.746.746,0,0,1,.745-.75h.009a.75.75,0,1,1-.754.75Zm-4.448,0a.747.747,0,0,1,.746-.75h.009a.75.75,0,1,1-.755.75Zm8.885-3.886a.747.747,0,0,1,.745-.751H14.2a.75.75,0,1,1-.754.751Zm-4.437,0a.747.747,0,0,1,.745-.751h.009a.75.75,0,1,1-.754.751Zm-4.448,0a.747.747,0,0,1,.746-.751h.009a.75.75,0,1,1-.755.751Z" transform="translate(0 0)"/>
 </svg>
+
   );
 };
 export  const DocumentIcon = ({ className , style }) =>  {
@@ -73,18 +72,17 @@ export  const DocumentIcon = ({ className , style }) =>  {
   
   );
 };
-export  const UsersIcon = ({ className , style }) =>  {
+export  const UsersIcon = ({ className, className1 , style }) =>  {
   return (
-    <svg className={className} style={style}  xmlns="http://www.w3.org/2000/svg" width="21.773" height="16.791" viewBox="0 0 21.773 16.791">
-  <g id="_3_User" data-name="3 User" transform="translate(0 0)">
-    <path id="Stroke_1" data-name="Stroke 1" d="M0,5.677A2.876,2.876,0,0,0,2.472,2.836,2.875,2.875,0,0,0,.066,0" transform="translate(16.888 1.72)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
-    <path id="Stroke_3" data-name="Stroke 3" d="M0,0C1.351.2,2.294.675,2.294,1.65c0,.671-.444,1.107-1.162,1.381" transform="translate(18.729 10.75)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
-    <path id="Stroke_5" data-name="Stroke 5" d="M5.959,0C2.745,0,0,.487,0,2.432S2.728,4.877,5.959,4.877c3.214,0,5.958-.482,5.958-2.428S9.19,0,5.959,0Z" transform="translate(4.928 11.164)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
-    <path id="Stroke_7" data-name="Stroke 7" d="M3.819,7.638a3.805,3.805,0,1,0-.028,0Z" transform="translate(7.068 0.75)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
-    <path id="Stroke_9" data-name="Stroke 9" d="M2.472,5.677A2.871,2.871,0,0,1,2.406,0" transform="translate(2.413 1.72)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
-    <path id="Stroke_11" data-name="Stroke 11" d="M2.294,0C.943.2,0,.675,0,1.65c0,.671.444,1.107,1.162,1.381" transform="translate(0.75 10.75)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
-  </g>
-</svg>
+    <svg className={className} style={style}  xmlns="http://www.w3.org/2000/svg" width="19.499" height="16.588" viewBox="0 0 19.499 16.588">
+    <g id="_2_users" data-name="2 users" transform="translate(-3.1 -3.707)">
+      <path className={className1}id="Path_22119" data-name="Path 22119" d="M5.872,19.545A2,2,0,0,1,3.85,17.433c0-2.5,2.445-3.365,6.128-3.394,3.69.039,6.141.9,6.128,3.394a2,2,0,0,1-2.022,2.112Z" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1.5"/>
+      <path className={className1}id="Path_22120" data-name="Path 22120" d="M18.643,18.816h1.566a1.622,1.622,0,0,0,1.64-1.713c.009-1.757-1.491-2.515-3.849-2.7" fill="none" stroke="#000" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.5"/>
+      <path className={className1}id="Path_22121" data-name="Path 22121" d="M9.958,10.9A3.222,3.222,0,1,0,6.736,7.679,3.222,3.222,0,0,0,9.958,10.9Z" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1.5"/>
+      <path className={className1} id="Path_22122" data-name="Path 22122" d="M17.985,10.76a2.1,2.1,0,1,0-2.1-2.1A2.1,2.1,0,0,0,17.985,10.76Z" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="1.5"/>
+    </g>
+  </svg>
+  
 
   
   );
@@ -148,11 +146,16 @@ export  const ActivityIcon = ({ className , style }) =>  {
 };
 export  const LogoutIcon = ({ className , style }) =>  {
   return (
-    <svg className={className} style={style} id="Iconly_Broken_Logout" data-name="Iconly/Broken/Logout" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-  <g id="Logout" transform="translate(2 2.5)">
-    <path id="Logout-2" data-name="Logout" d="M4.33,19A4.284,4.284,0,0,1,0,14.775a.74.74,0,0,1,.75-.731.74.74,0,0,1,.75.731A2.8,2.8,0,0,0,4.33,17.537H9.077A2.79,2.79,0,0,0,11.9,14.785v-.894a.75.75,0,0,1,1.5,0v.894A4.273,4.273,0,0,1,9.077,19Zm11.543-6.219a.719.719,0,0,1,0-1.035l1.56-1.514H7.549a.732.732,0,1,1,0-1.464h11.7a.75.75,0,0,1,.693.453.721.721,0,0,1-.164.8l-2.846,2.764a.763.763,0,0,1-1.06,0ZM0,11.449V4.215A4.274,4.274,0,0,1,4.322,0H9.068A4.284,4.284,0,0,1,13.4,4.225v.885a.75.75,0,0,1-1.5,0V4.225A2.8,2.8,0,0,0,9.068,1.463H4.322A2.79,2.79,0,0,0,1.5,4.215v7.234a.742.742,0,0,1-.751.732A.741.741,0,0,1,0,11.449Zm16.594-3.5-.718-.692a.718.718,0,0,1,0-1.034.76.76,0,0,1,1.06-.005l.717.691a.719.719,0,0,1,.005,1.035.763.763,0,0,1-1.06.005Z"/>
+    <svg className={className} style={style}  xmlns="http://www.w3.org/2000/svg" width="20.566" height="20.016" viewBox="0 0 20.566 20.016">
+  <g id="Check_out" data-name="Check out" transform="translate(-1.562 -1.992)">
+    <path id="Path_22123" data-name="Path 22123" d="M13.882,11.123v1.753" fill="none" stroke="#000" stroke-linecap="round" stroke-width="1.5"/>
+    <path id="Path_22124" data-name="Path 22124" d="M10.822,18.584V5.416a2.666,2.666,0,0,1,3.209-2.609l5.223,1.084A2.665,2.665,0,0,1,21.378,6.5v11a2.665,2.665,0,0,1-2.124,2.609l-5.223,1.084A2.666,2.666,0,0,1,10.822,18.584Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_22125" data-name="Path 22125" d="M10.683,19.125H7.831a2.452,2.452,0,0,1-2.453-2.451" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_22126" data-name="Path 22126" d="M2.622,12H8.491M2.622,12l2.008-2M2.622,12l2.008,2" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path id="Path_22127" data-name="Path 22127" d="M10.683,4.875H7.831A2.452,2.452,0,0,0,5.378,7.327" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
   </g>
 </svg>
+
 
 
 
@@ -162,11 +165,15 @@ export  const LogoutIcon = ({ className , style }) =>  {
 };
 export  const SettingsIcon = ({ className , style }) =>  {
   return (
-    <svg className={className} style={style} id="Iconly_Broken_Setting" data-name="Iconly/Broken/Setting" xmlns="http://www.w3.org/2000/svg" width="23" height="25" viewBox="0 0 23 25">
-<g id="Setting" transform="translate(0 0.466)">
-  <path id="Setting-2" data-name="Setting" d="M7.475,21.706a1.269,1.269,0,0,0-.173-.658,1.322,1.322,0,0,0-1.807-.494,3.253,3.253,0,0,1-4.356-1.186L.4,18.061a3.31,3.31,0,0,1,1.177-4.392,1.35,1.35,0,0,0,.478-.483,1.334,1.334,0,0,0-.424-1.933A3.308,3.308,0,0,1,.452,6.863.943.943,0,0,1,1.771,6.6a.95.95,0,0,1,.271,1.275,1.335,1.335,0,0,0,.49,1.811,3.215,3.215,0,0,1,1.133,1.2,3.309,3.309,0,0,1-1.177,4.391A1.337,1.337,0,0,0,2,17.084l.752,1.306a1.3,1.3,0,0,0,.8.63,1.284,1.284,0,0,0,1.006-.147,3.126,3.126,0,0,1,1.6-.428A3.28,3.28,0,0,1,9.424,21.74a1.335,1.335,0,0,0,1.329,1.329l-.011.021a.947.947,0,0,1,.82.478.964.964,0,0,1,0,.955.949.949,0,0,1-.82.477A3.281,3.281,0,0,1,7.475,21.706Zm6.087.1a3.3,3.3,0,0,1,1.63-2.783,3.247,3.247,0,0,1,3.205-.038,1.287,1.287,0,0,0,1,.143A1.367,1.367,0,0,0,20.2,18.5l.74-1.307a1.322,1.322,0,0,0-.479-1.811,3.175,3.175,0,0,1-1.186-1.306,3.309,3.309,0,0,1,1.176-4.392.963.963,0,0,1,.959,1.668,1.356,1.356,0,0,0-.479.484,1.336,1.336,0,0,0,.479,1.823,3.309,3.309,0,0,1,1.132,4.5l-.74,1.306a3.252,3.252,0,0,1-4.356,1.186,1.3,1.3,0,0,0-1.328-.012,1.321,1.321,0,0,0-.654,1.166.957.957,0,0,1-1.905,0ZM8.6,15.428a4.142,4.142,0,0,1-.892-4.5,4.083,4.083,0,0,1,3.784-2.552h.013a4.039,4.039,0,0,1,2.881,1.2,4.152,4.152,0,0,1-1.319,6.738A4.063,4.063,0,0,1,8.6,15.428Zm.714-2.923a2.178,2.178,0,1,0,2.178-2.2A2.189,2.189,0,0,0,9.315,12.506ZM20.2,6.6A1.322,1.322,0,0,0,18.4,6.116a3.241,3.241,0,0,1-3.2-.036,3.3,3.3,0,0,1-1.634-2.774,1.336,1.336,0,0,0-.37-.969,1.306,1.306,0,0,0-.947-.4H10.753a1.32,1.32,0,0,0-.951.4,1.343,1.343,0,0,0-.378.969A3.243,3.243,0,0,1,7.8,6.093,3.189,3.189,0,0,1,4.59,6.072l-.044-.044A.962.962,0,0,1,4.242,4.71.945.945,0,0,1,5.549,4.4a1.359,1.359,0,0,0,.653.186,1.317,1.317,0,0,0,.955-.352,1.348,1.348,0,0,0,.427-.932A3.282,3.282,0,0,1,10.753,0h1.491a3.28,3.28,0,0,1,3.266,3.294,1.267,1.267,0,0,0,.174.658,1.312,1.312,0,0,0,1.807.5,3.252,3.252,0,0,1,4.356,1.186A.982.982,0,0,1,21.5,6.939.952.952,0,0,1,20.2,6.6Z" transform="translate(0 -0.466)" />
-</g>
+    <svg  className={className} style={style} xmlns="http://www.w3.org/2000/svg" width="19.534" height="20.722" viewBox="0 0 19.534 20.722">
+  <g id="Iconly_Light_Setting" data-name="Iconly/Light/Setting" transform="translate(-2.4 -1.528)">
+    <g id="Setting" transform="translate(2.5 1.5)">
+      <path id="Path_33946" d="M18.307,6.124l-.622-1.08a1.913,1.913,0,0,0-2.609-.7h0a1.9,1.9,0,0,1-2.609-.677,1.832,1.832,0,0,1-.256-.915h0A1.913,1.913,0,0,0,10.3.778H9.043a1.9,1.9,0,0,0-1.9,1.913h0A1.913,1.913,0,0,1,5.227,4.577a1.831,1.831,0,0,1-.915-.256h0a1.913,1.913,0,0,0-2.609.7l-.668,1.1a1.913,1.913,0,0,0,.7,2.609h0a1.913,1.913,0,0,1,0,3.314h0a1.9,1.9,0,0,0-.7,2.6h0l.632,1.089a1.913,1.913,0,0,0,2.609.741h0a1.895,1.895,0,0,1,2.6.7,1.831,1.831,0,0,1,.256.915h0A1.913,1.913,0,0,0,9.043,20H10.3a1.913,1.913,0,0,0,1.913-1.9h0a1.9,1.9,0,0,1,1.913-1.913,1.949,1.949,0,0,1,.915.256h0a1.913,1.913,0,0,0,2.609-.7h0l.659-1.1a1.9,1.9,0,0,0-.7-2.609h0a1.9,1.9,0,0,1-.7-2.609,1.877,1.877,0,0,1,.7-.7h0a1.913,1.913,0,0,0,.7-2.6h0Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" fill-rule="evenodd"/>
+      <circle id="Ellipse_737" cx="2.636" cy="2.636" r="2.636" transform="translate(7.039 7.753)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </g>
+  </g>
 </svg>
+
 
 
 
@@ -304,10 +311,10 @@ export const MenuIcon = ({className, style}) => {
   return (
     <svg className={className} style={style} id="Iconly_Light_Category" data-name="Iconly/Light/Category" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
   <g id="Category" transform="translate(2.999 3)">
-    <path id="Stroke_1" data-name="Stroke 1" d="M0,3.5C0,.875.028,0,3.5,0S7,.875,7,3.5,7.011,7,3.5,7,0,6.125,0,3.5Z" transform="translate(0.001)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
-    <path id="Stroke_3" data-name="Stroke 3" d="M0,3.5C0,.875.028,0,3.5,0S7,.875,7,3.5,7.011,7,3.5,7,0,6.125,0,3.5Z" transform="translate(11.001)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
-    <path id="Stroke_5" data-name="Stroke 5" d="M0,3.5C0,.875.028,0,3.5,0S7,.875,7,3.5,7.011,7,3.5,7,0,6.125,0,3.5Z" transform="translate(0.001 11)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
-    <path id="Stroke_7" data-name="Stroke 7" d="M0,3.5C0,.875.028,0,3.5,0S7,.875,7,3.5,7.011,7,3.5,7,0,6.125,0,3.5Z" transform="translate(11.001 11)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    <path  className={className} style={style} id="Stroke_1" data-name="Stroke 1" d="M0,3.5C0,.875.028,0,3.5,0S7,.875,7,3.5,7.011,7,3.5,7,0,6.125,0,3.5Z" transform="translate(0.001)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    <path className={className} style={style}  id="Stroke_3" data-name="Stroke 3" d="M0,3.5C0,.875.028,0,3.5,0S7,.875,7,3.5,7.011,7,3.5,7,0,6.125,0,3.5Z" transform="translate(11.001)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    <path className={className} style={style}  id="Stroke_5" data-name="Stroke 5" d="M0,3.5C0,.875.028,0,3.5,0S7,.875,7,3.5,7.011,7,3.5,7,0,6.125,0,3.5Z" transform="translate(0.001 11)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+    <path className={className} style={style}  id="Stroke_7" data-name="Stroke 7" d="M0,3.5C0,.875.028,0,3.5,0S7,.875,7,3.5,7.011,7,3.5,7,0,6.125,0,3.5Z" transform="translate(11.001 11)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
   </g>
 </svg>
 
@@ -447,11 +454,11 @@ export const AddDocument = ({className, style }) => {
 export const MapMark = ({className, style }) => {
   return (
 <svg className={className} style={style} xmlns="http://www.w3.org/2000/svg" width="16.5" height="19.5" viewBox="0 0 16.5 19.5">
-  <g id="Location" transform="translate(0.75 0.75)">
-    <path id="Stroke_1" data-name="Stroke 1" d="M5,2.5A2.5,2.5,0,1,0,2.5,5,2.5,2.5,0,0,0,5,2.5Z" transform="translate(5 5)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
-    <path id="Stroke_3" data-name="Stroke 3" d="M7.5,18C6.3,18,0,12.9,0,7.563a7.5,7.5,0,1,1,15,0C15,12.9,8.7,18,7.5,18Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="1.5"/>
+  <g id="Location" transform="translate(0 -1)">
+    <path id="Combined_Shape" data-name="Combined Shape" d="M0,8.313A8.291,8.291,0,0,1,8.25,0,8.291,8.291,0,0,1,16.5,8.313C16.5,13.948,10.044,19.5,8.25,19.5S0,13.948,0,8.313Zm1.5,0c0,4.8,5.628,9.436,6.75,9.683C9.372,17.748,15,13.111,15,8.313a6.75,6.75,0,1,0-13.5,0ZM5,8.251A3.25,3.25,0,1,1,8.251,11.5,3.254,3.254,0,0,1,5,8.251Zm1.5,0A1.75,1.75,0,1,0,8.251,6.5,1.752,1.752,0,0,0,6.5,8.251Z" transform="translate(-0.001 1)"/>
   </g>
 </svg>
+
 
 );
 };
@@ -569,4 +576,122 @@ export const DeliveryCar = ({ className, className2, className3, className4, cla
 );
 };
 
+export const MapMain = ({ className,  style, className1, className2, className3}) => {
+  return (
 
+<svg   className={className} style={style} xmlns="http://www.w3.org/2000/svg" width="19.634" height="19.602" viewBox="0 0 19.634 19.602">
+  <g   id="Map" transform="translate(-2.75 -2.25)">
+    <path className={className1}  data-name="Path 22116" d="M8.282,3h8.435C19.665,3,21.5,5.081,21.5,8.026v7.947C21.5,18.919,19.665,21,16.716,21H8.282C5.334,21,3.5,18.919,3.5,15.974V8.026C3.5,5.081,5.343,3,8.282,3Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path className={className2}  data-name="Path 22117" d="M21.5,9.7,3.81,6.051M10.26,7.38,7.7,20.976" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path className={className3}  data-name="Path 22118" d="M15.125,14.428V14.4m0,3.749a4.889,4.889,0,0,1-2.678-3.726,2.678,2.678,0,1,1,5.355,0A4.889,4.889,0,0,1,15.125,18.145Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  </g>
+</svg>
+
+);
+};
+
+
+
+export const Notification = ({ className,  style}) => {
+  return (
+<svg className={className} style={style} xmlns="http://www.w3.org/2000/svg" width="18.5" height="21.5" viewBox="0 0 18.5 21.5">
+  <g id="Iconly_Light_Notification" data-name="Iconly/Light/Notification" transform="translate(-2.75 -1.25)">
+    <g id="Notification" transform="translate(3.5 2)">
+      <path id="Stroke-1" d="M8.5,15.848c5.639,0,8.248-.723,8.5-3.627,0-2.9-1.819-2.715-1.819-6.275C15.181,3.164,12.545,0,8.5,0S1.819,3.164,1.819,5.945C1.819,9.505,0,9.319,0,12.22.253,15.135,2.862,15.848,8.5,15.848Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" fill-rule="evenodd"/>
+      <path id="Stroke-3" d="M10.889,18.857a3.165,3.165,0,0,1-4.869,0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" fill-rule="evenodd"/>
+    </g>
+  </g>
+</svg>
+);
+};
+
+
+
+export const ArrowLeft = ({ className,  style}) => {
+  return (
+<svg className={className} style={style} xmlns="http://www.w3.org/2000/svg" width="8.811" height="16.121" viewBox="0 0 8.811 16.121">
+  <g id="Iconly_Light_Arrow---Left-2" data-name="Iconly/Light/Arrow---Left-2" transform="translate(-7.75 -3.939)">
+    <g id="Arrow---Left-2" transform="translate(15.5 5) rotate(90)">
+      <path id="Stroke-1" d="M14,0,7,7,0,0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" fill-rule="evenodd"/>
+    </g>
+  </g>
+</svg>
+);
+};
+
+export const ArrowRight = ({ className,  style}) => {
+  return (
+<svg className={className} style={style} xmlns="http://www.w3.org/2000/svg" width="8.811" height="16.121" viewBox="0 0 8.811 16.121">
+  <g id="Iconly_Light_Arrow---Right-2" data-name="Iconly/Light/Arrow---Right-2" transform="translate(-7.439 -3.939)">
+    <g id="Arrow---Right-2" transform="translate(8.5 19) rotate(-90)">
+      <path id="Stroke-1" d="M14,0,7,7,0,0" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" fill-rule="evenodd"/>
+    </g>
+  </g>
+</svg>
+
+
+
+    );
+};
+
+export const MessageIcon = ({ className,  style}) => {
+  return (
+<svg className={className} style={style} xmlns="http://www.w3.org/2000/svg" width="21.5" height="19.5" viewBox="0 0 21.5 19.5">
+  <g id="Iconly_Light-Outline_Message" data-name="Iconly/Light-Outline/Message" transform="translate(-1 -2)">
+    <g id="Message" transform="translate(1 1)">
+      <path id="Combined-Shape" d="M15.659,1C18.989,1,21.5,3.717,21.5,7.32v6.868a6.541,6.541,0,0,1-1.837,4.692,5.529,5.529,0,0,1-3.988,1.62H5.822a5.524,5.524,0,0,1-3.985-1.62A6.541,6.541,0,0,1,0,14.188V7.32C0,3.717,2.511,1,5.841,1Zm0,1.5H5.841C3.326,2.5,1.5,4.527,1.5,7.32v6.868a5.053,5.053,0,0,0,1.4,3.629A4.05,4.05,0,0,0,5.825,19h9.834s.01,0,.016,0A4.049,4.049,0,0,0,18.6,17.817,5.049,5.049,0,0,0,20,14.188V7.32C20,4.527,18.174,2.5,15.659,2.5Zm1.576,4.629a.751.751,0,0,1-.109,1.055L12.682,11.8a3.042,3.042,0,0,1-3.8.006L4.4,8.186a.75.75,0,1,1,.941-1.168L9.82,10.63a1.544,1.544,0,0,0,1.923,0L16.179,7.02A.749.749,0,0,1,17.235,7.129Z" fill-rule="evenodd"/>
+    </g>
+  </g>
+</svg>
+
+);
+};
+
+
+export const QestionCircle = ({ className,  style}) => {
+  return (
+<svg className={className} style={style}xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19">
+  <path id="question_mark_circle" data-name="question mark circle" d="M13.709,12.8l-.141.079c-.648.362-.877.548-.872.866a.751.751,0,0,1-.74.76h-.01a.749.749,0,0,1-.75-.74,2.535,2.535,0,0,1,1.639-2.194l.141-.08a1.435,1.435,0,0,0,.853-1.293,1.639,1.639,0,0,0-1.638-1.637,1.621,1.621,0,0,0-1.639,1.637.75.75,0,0,1-1.5,0,3.139,3.139,0,0,1,6.277,0A2.9,2.9,0,0,1,13.709,12.8ZM11.947,16.96a.738.738,0,0,1-.75-.735v-.03a.75.75,0,1,1,1.5,0A.763.763,0,0,1,11.947,16.96ZM12,2.5A9.5,9.5,0,1,0,21.5,12,9.511,9.511,0,0,0,12,2.5Z" transform="translate(-2.5 -2.5)" fill-rule="evenodd"/>
+</svg>
+);
+};
+
+
+
+export const AddUser = ({ className,  style}) => {
+  return (
+<svg className={className} style={style} xmlns="http://www.w3.org/2000/svg" width="17.738" height="17.984" viewBox="0 0 17.738 17.984">
+  <g id="add_user" data-name="add user" transform="translate(-3.258 -3.008)">
+    <circle className={className} style={style} id="Ellipse_54" data-name="Ellipse 54" cx="4.701" cy="4.701" r="4.701" transform="translate(5.795 3.758)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path className={className} style={style} id="Path_22128" data-name="Path 22128" d="M4.08,19.784a11.384,11.384,0,0,1-.065-1.944,4.4,4.4,0,0,1,4.4-4.4H12.7a4.378,4.378,0,0,1,2.321.662" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path className={className} style={style} id="Path_22129" data-name="Path 22129" d="M20.245,17.692h-5m2.5,2.55v-5.1" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  </g>
+</svg>
+);
+};
+
+export const SearchIcon = ({ className,  style}) => {
+  return (
+<svg className={className} style={style} xmlns="http://www.w3.org/2000/svg" width="19.381" height="19.811" viewBox="0 0 19.381 19.811">
+  <g className={className} id="Search" transform="translate(-2.465 -2.25)">
+    <path className={className} style={style} id="Path_22130" data-name="Path 22130" d="M17.361,17.584,20.786,21M11.632,3a8.418,8.418,0,1,1-8.418,8.417A8.417,8.417,0,0,1,11.632,3Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    <path className={className} style={style} id="Path_22131" data-name="Path 22131" d="M13.332,6.741a4.477,4.477,0,0,1,2.952,2.9" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+  </g>
+</svg>
+);
+};
+
+export const AddContract = ({ className,  style}) => {
+  return (
+<svg className={className} style={style} xmlns="http://www.w3.org/2000/svg" width="17.053" height="19.867" viewBox="0 0 17.053 19.867">
+  <g id="Iconly_Light_Paper-Plus" data-name="Iconly/Light/Paper-Plus" transform="translate(-3.5 -2)">
+    <g id="Paper-Plus" transform="translate(3.5 2)">
+      <path className={className} style={style} id="Stroke-1" d="M11.237.762H4.585A3.82,3.82,0,0,0,.751,4.491V15.34A3.714,3.714,0,0,0,4.4,19.117c.061,0,.123,0,.185,0h7.988A3.769,3.769,0,0,0,16.3,15.34V6.04Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" fill-rule="evenodd"/>
+      <path className={className} style={style} id="Stroke-3" d="M10.974.75V3.659a2.575,2.575,0,0,0,2.569,2.575H16.3" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" fill-rule="evenodd"/>
+      <line className={className} style={style} id="Stroke-5" x1="4.9" transform="translate(5.894 10.914)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <line className={className} style={style} id="Stroke-7" y1="4.9" transform="translate(8.344 8.464)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>
+);
+};

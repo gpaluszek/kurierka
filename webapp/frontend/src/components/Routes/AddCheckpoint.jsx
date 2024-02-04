@@ -1,15 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-
-import {
-  AvatarWoman,
-  AvatarMan,
-  SettingTwoIcon,
-  AddUserIcon,
-  FsquareIcon
-} from "../../common/icons/icons.jsx";
-import { AddUserIll  } from "../../common/illustrastion/illustration.jsx";
+import { useNavigate, NavLink } from "react-router-dom";
+import { Tooltip } from 'react-tooltip';
+import { QestionCircle } from "../../common/icons/icons";
 
 const AddCheckpoint = () => {
 
@@ -87,14 +80,22 @@ const AddCheckpoint = () => {
 
   //     navigate]);
   return (
-    <div>
+    <div className="main-container">
     <div className="model-form-add">
-      <div className="model-form-head">
-        <FsquareIcon className="table-header-panel-icon" />Zarządzanie Trasami: Twoja Centrum Kontroli
+    <div className="model-form-head">
+          <div className="model-form-head-panel">
+            <NavLink className="top-nav-dash-a first" to="/dashboard">Dashboard</NavLink> &#62; <NavLink className="top-nav-dash-a" to="/users">Lista Pracowników</NavLink> &#62; <NavLink className="top-nav-dash-a">Dodaj punkt</NavLink>
+          </div>
+          <div className="table-header-panel-left">
+            <h1 className="teable-header-h1"> Dodaj Punkt </h1>
+            <div className="nothing" id="not-clickable" > <QestionCircle /></div>
+          </div>
       </div>
       <div className="model-form-container">
+    
       {msg && <p>{msg}</p>}
           <form onSubmit={handleSubmit}>
+          <div className="form-column-one">
             <label for="form-text-one">
                       Nazwa punktu kontrolnego
            </label>
@@ -179,9 +180,14 @@ const AddCheckpoint = () => {
           <button className="model-from-input-submit" type="submit">
               Dodaj punkt kontrolny
             </button>
+            </div>
           </form>
+          
         </div>
       </div>
+      <Tooltip anchorSelect="#not-clickable" place="bottom">
+      Dodaj nowy punkt trasy kuriera, klikając poniższy przycisk. Wprowadź dokładne informacje dotyczące lokalizacji, abyśmy mogli zoptymalizować trasę dla efektywnego dostarczenia.
+       </Tooltip>
     </div>
   );
 };
